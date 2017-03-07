@@ -1,0 +1,95 @@
+<<Same as ChesnutBorer09.25.15_CNF except for Ecoregion Modifiers
+
+LandisData "BDA Agent"
+
+BDAAgentName		ChestnutBorer
+BDPCalibrator		1
+SRDMode			max
+
+>>-------- Regional Outbreak Inputs --------
+OutbreakPattern Climate << CyclicNormal or CyclicUniform or Climate
+VariableName                      AnnualPDSI    	<< Any variable from the climate library or external file
+Source				  UID_PDSI_annual_100y.csv  	<< Filename or Library
+ThresholdLowerBound              -7.0      		<< outbreak 
+ThresholdUpperBound              -1.5      
+OutbreakLag                       1			<< years
+TimeSinceLastClimate              1             	<< years (optional)
+TemporalType 			 pulse			<< pulse or variablepulse
+MinROS                            0
+MaxROS                            3
+
+>>-------- Dispersal Inputs ----------------------
+Dispersal		no	<<yes or no --LETS START HERE. ALL THE OTHER PARAMETERS ARE FROM THE BARK BEETLES IN THE WEST - IGNORED SINCE DISPERSAL IS TURNED OFF
+DispersalRate		600	<<meters/year This came from Joel Egen conversation
+EpidemicThresh		0.01  
+InitialEpicenterNum	15000  <<This value came from ADS maps year ==1993
+OutbreakEpicenterCoeff	0.01 << # of epicenters w/in outbreak zone.increasing this param decreases # of new epicenters
+OutbreakEpicenterThresh 0.01
+SeedEpicenter		yes	<<yes or no
+SeedEpicenterCoeff	0.01  <<# of epicenters outside outbreak zone. #of epicenters will decrease with increasing value
+DispersalTemplate	MaxRadius	<<MaxRadius, 4N,
+				<<8N, 12N, or 24N
+
+>>-------- Neighborhood Resource Inputs -----------
+NeighborFlag	no	<<yes or no  	NEIGHBORHOOD PARAMETERS IGNORED
+NeighborSpeedUp none			<<none, 2x, 3x, or 4x
+NeighborRadius	10000	<<meters
+NeighborShape	uniform			<<uniform, linear, or gaussian
+NeighborWeight	20
+
+>>-- Intensity Class Thresholds --
+
+>> REFLECTS CAPACITY TO AFFECT DIFFERENT SUSCEPTIBILITY CLASSES - REALLY JUST 2
+>>IntensityClass1_BDP 	0.0 -- Hardwired value
+IntensityClass2_BDP 	0.0
+IntensityClass3_BDP 	0.41
+
+>>EcoregionModifiers
+>> Ecoregion Value  
+	MN100	-1.0	
+	MN101	-1.0	
+	MN102	-1.0	
+	MN103	-1.0	
+	MN104	-1.0	
+	MN200	-1.0	
+	MN201	-1.0	
+	MN202	-1.0	
+	MN203	-1.0	
+	MN204	-1.0	
+	MN300	-1.0	
+	MN301	-1.0	
+	MN302	-1.0	
+	MN303	-1.0	
+	MN304	-1.0	
+	MN400	-1.0	
+	MN401	-1.0	
+	MN402	-1.0	
+	MN403	-1.0	
+	MN404	-1.0	
+	MN500	-1.0	
+	MN501	-1.0
+	MN502	-1.0
+	MN503	-1.0
+	MN504	-1.0	
+
+
+DisturbanceModifiers
+>>Value		Duration	DisturbanceType
+1.0		1		BiomassInsectsDefol33
+
+>> WHEN YOU ADD THE ECOREGION MODIFIERS TO THE DISTURBANCE MODIFIERS- THEY CANCEL EACH OTHER OUT.  
+>> SO, DROUGHT TRIGGERS DISTURBANCE, BUT IT IS ONLY POSSIBLE WHEN IT OCCURS AT THE SAME TIME AS DEFOLIATION
+
+BDASpeciesParameters << From Egen JPB Effects report (dbh affected), and silvics manual (age-dbh relationship)
+>>                                        Susceptibility  
+>>Species  MinorHost  2ndHost  MajorHost  Class3   Class2   Class1	CFS
+>>Name     Age        Age      Age        Age      Age      Age		Conifer
+>> -----------------------------------------------------------------------------
+>>         -------------Host Value--------------  -------------Susceptibility-------------
+>>Species  MinorHost    2ndHost      MajorHost    Class3        Class2        Class1	    CFS
+>>Name     Age SRDProb  Age SRDProb  Age SRDProb  Age VulnProb  Age VulnProb  Age VulnProb  Conifer?
+>> ---------------------------------------------------------------------------------------------
+querrubr  0	0.1     30  0.5	     150   1.0     30    0.40     150   1.0     200  1.0     no  << 
+
+>> WE MAY HAVE TO PLAY WITH THESE PROBABILITIES.  TECHNICALLY 2-3 YEARS OF DEFOLIATION IN CONJUNCTION WITH DROUGHT WILL CAUSE THE DAMAGE.  
+>> SO THE ABOVE MAY OVERESTIMATE THE IMPACT.  CONSIDER REDUCING BY DIVIDING BY 2.5 TO ACCOUNT FOR THIS.

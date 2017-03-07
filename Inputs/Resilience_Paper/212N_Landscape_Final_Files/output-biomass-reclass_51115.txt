@@ -1,0 +1,43 @@
+LandisData  "Output Leaf Biomass Reclass"
+
+Timestep   10
+
+
+ReclassMaps
+
+>> Map Name    Forest Type    Species
+>> --------    -------------  -------
+>>These are the ones that correspond to FIA forest types.  Listed in order of % in FIA plots.
+>>My attempt to increase 901 and reduce 701
+reclass1 -> 	Aspen_901		poputrem popugran betupapy -pinuresi -picemari
+		BlAshElmRedMap_701	fraxnigr  ulmuamer	ulmurubr
+		Tamarack_126		larilari 		
+		BlackSpruce_125		picemari 
+		PaperBirch_902		betupapy  -pinuresi
+		RedPine_102  		pinuresi 
+		HardMaplBassw_805	tiliamer ostrvirg acersacc
+		WhiteRedOak_503		queralba  querrubr ostrvirg popudelt
+		JackPine_101  		pinubank  
+               	WhitePine_103  		pinustro
+               	BalsamFir_121		abiebals
+		WhiteSpruce_122		piceglau
+		Cedar_127		thujocci
+		WhitePineGroup_401	pinustro querrubr 
+		OtherPineHard_409	pinubank pinuresi betupapy querelli
+		RedOak_505		querrubr
+		BurOak_509		quermacr
+		ElmAsh_517		fraxnigr fraxpenn
+		RedMapleOak_519		acerrubr 
+		MixHardwood_520		quermacr tiliamer
+		BalsamPop_904		popubals			
+		RiverBirch_702		popubals
+		Willow_704		salix
+		HackElmGAsh_706		celtis acerspic fraxpenn
+		Elm_707			ulmuamer ulmurubr		
+		RedMaple_708		acerrubr
+		SugMapBeechYB_801	acersacc betualle 
+		RedMaple_809		acerrubr	
+		PinCherry_905		prunpens		
+		OtherHard_962		larilari ostrvirg abiebals
+
+MapFileNames   output-biomass-reclass/bio-{reclass-map-name}-{timestep}.img

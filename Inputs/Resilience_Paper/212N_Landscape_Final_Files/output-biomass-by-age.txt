@@ -1,0 +1,41 @@
+LandisData  "Output Biomass-by-Age"
+
+Timestep   10
+
+MapNames   spp-bio-age/{species}-{ageclass}-{timestep}.img
+
+Species	abiebals	ageclass1(10-40)	ageclass2(>40)
+	acernegu	ageclass1(10-40)	ageclass2(>40)
+	acerrubr	ageclass1(10-40)	ageclass2(>40)
+	acersacc	ageclass1(10-40)	ageclass2(>40)
+	acerspic	ageclass1(10-40)	ageclass2(>40)
+	betualle	ageclass1(10-40)	ageclass2(>40)
+	celtis		ageclass1(10-40)	ageclass2(>40)
+	fraxamer	ageclass1(10-40)	ageclass2(>40)
+	fraxnigr	ageclass1(10-40)	ageclass2(>40)
+	fraxpenn	ageclass1(10-40)	ageclass2(>40)
+	larilari	ageclass1(10-40)	ageclass2(>40)
+	ostrvirg	ageclass1(10-40)	ageclass2(>40)
+	piceglau	ageclass1(10-40)	ageclass2(>40)
+	picemari	ageclass1(10-40)	ageclass2(>40)
+	pinubank	ageclass1(10-40)	ageclass2(>40)
+	pinuresi	ageclass1(10-40)	ageclass2(>40)
+	pinustro	ageclass1(10-40)	ageclass2(>40)
+	popubals	ageclass1(10-40)	ageclass2(>40)
+	popudelt	ageclass1(10-40)	ageclass2(>40)
+	popugran	ageclass1(10-40)	ageclass2(>40)
+	poputrem	ageclass1(10-40)	ageclass2(>40)
+	prunpens	ageclass1(10-40)	ageclass2(>40)
+	prunsero	ageclass1(10-40)	ageclass2(>40)
+	prunvirg	ageclass1(10-40)	ageclass2(>40)
+	queralba	ageclass1(10-40)	ageclass2(>40)
+	querelli	ageclass1(10-40)	ageclass2(>40)
+	quermacr	ageclass1(10-40)	ageclass2(>40)
+	querrubr	ageclass1(10-40)	ageclass2(>40)
+	salix		ageclass1(10-40)	ageclass2(>40)
+	thujocci	ageclass1(10-40)	ageclass2(>40)
+	tiliamer	ageclass1(10-40)	ageclass2(>40)
+	ulmuamer	ageclass1(10-40)	ageclass2(>40)
+	ulmurubr	ageclass1(10-40)	ageclass2(>40)
+
+

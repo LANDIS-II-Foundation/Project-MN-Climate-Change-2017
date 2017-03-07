@@ -1,0 +1,34 @@
+LandisData  "Output Cohort Statistics"
+
+
+Timestep   10
+
+SpeciesAgeStats
+
+MapNames   spp-age-stats/{species}-{statistic}-{timestep}.img
+
+MIN 	poputrem quermacr querrubr pinuresi betupapy fraxnigr larilari acerrubr acersacc tiliamer   	<< minimum age for each species
+MAX 	poputrem quermacr querrubr pinuresi betupapy fraxnigr larilari acerrubr acersacc tiliamer		<< maximum age for each species
+MED		poputrem quermacr querrubr pinuresi betupapy fraxnigr larilari acerrubr acersacc tiliamer	<< median age for each species
+SD		poputrem quermacr querrubr pinuresi betupapy fraxnigr larilari acerrubr acersacc tiliamer	<< standard deviation age for each species
+AVG		poputrem quermacr querrubr pinuresi betupapy fraxnigr larilari acerrubr acersacc tiliamer	<< average age for each species
+
+
+SiteAgeStats
+
+MapNames   spp-age-stats/AGE-{statistic}-{timestep}.img
+
+MIN 			<< minimum age across all species on site
+MAX			<< maximum age across all species on site
+MED			<< median age across all species on site
+AVG			<< average age across all species on site
+RICH   			<< number of age classes across all species on site
+EVEN   			<< evenness 
+COUNT   		<< count of cohorts
+
+
+SiteSpeciesStats
+
+MapNames   spp-age-stats/SPP-{statistic}-{timestep}.img
+
+RICH   			<<count of species

@@ -1,0 +1,41 @@
+LandisData  "Output Max Species Age"
+
+Timestep   10
+
+MapNames   max-spp-age/{species}-{timestep}.img
+
+Species abiebals
+	acernegu
+	acerrubr
+	acersacc
+	acerspic
+	betualle
+	betupapy
+	celtis
+	fraxamer
+	fraxnigr
+	fraxpenn
+	larilari
+	ostrvirg
+	piceglau
+	picemari
+	pinubank
+	pinuresi
+	pinustro
+	popubals
+	popudelt
+	popugran
+	poputrem
+	prunpens
+	prunsero
+	prunvirg
+	queralba
+	querelli
+	quermacr
+	querrubr
+	salix
+	thujocci
+	tiliamer
+	ulmuamer
+	ulmurubr
+

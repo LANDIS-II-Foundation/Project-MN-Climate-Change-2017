@@ -1,0 +1,674 @@
+<<Prescriptions are based on CNF and may need to be renamed as we add other ownerships or management areas
+<<New Prescriptions from Eric but using Clear-cutting and not Patch-cutting for early prescriptions
+>>Same as this file. but with minor changes to RPine state.  CNF_Harvest_BAU_063015B.txt
+
+
+LandisData "Leaf Biomass Harvest"
+Timestep 10  
+
+ManagementAreas "ManageMap_112215.img"
+Stands      "StandMap_112315.img"
+
+<<Prescriptions are based on CNF and may need to be renamed as we add other ownerships or management areas
+>>****************************************
+
+Prescription JPine_Clearcut
+StandRanking 	MaxCohortAge  <<CUT OLDEST STANDS FIRST? USED THROUGHOUT MANY OF THE PRESCRIPTIONS.  THAT OK?
+MinimumAge 40
+
+ForestTypeTable 
+>> InclusionRule ageRange percentCells species
+Required 50-250 highest pinubank  	<< IS THIS AGE RANGE CORRECT?
+		
+SiteSelection Complete  
+CohortsRemoved ClearCut
+Plant pinubank				<<REPLANT?
+
+>>**************************************** 
+Prescription RPine_Clearcut		
+StandRanking 	MaxCohortAge	
+MinimumAge 80	
+
+ForestTypeTable << red pine
+>> InclusionRule ageRange percentCells species
+Required 80-450 highest pinuresi <<MIN AGE=50 or 60? MAX AGE?
+
+SiteSelection Complete
+CohortsRemoved ClearCut
+Plant pinuresi pinustro			<<REPLANT?
+
+>>*******************************************
+Prescription SpruceFir_Clearcut
+StandRanking 	MaxCohortAge
+MinimumAge 50
+
+ForestTypeTable << spruce fir
+>> InclusionRule ageRange percentCells species
+Required 50-450 highest piceglau abiebals		<<AGES RIGHT?  ADD ANY OTHER SPP?
+
+SiteSelection Complete
+CohortsRemoved ClearCut
+
+Plant piceglau abiebals <<Regenerate
+
+>>*******************************************
+Prescription	Aspen_Clearcut
+StandRanking 	MaxCohortAge
+MinimumAge 40
+
+		
+ForestTypeTable << can be used with trembling and bigtooth aspen and paper birch.
+>> InclusionRule ageRange percentCells species
+Optional 	40-200	50	poputrem popugran popudelt popubals <<if any of these species (in the age range) are found on at least 50% of the cells in the stand, it qualifies for cutting
+Optional 	40-200	highest	poputrem popugran
+Forbidden 	30-200	highest	betupapy  <<Exclude birch stands bc they are cut in another prescription		
+Forbidden 	100-200	highest	thujocci
+
+SiteSelection Complete   
+CohortsRemoved ClearCut  
+
+>>Plant poputrem popugran	
+>>*****************************************	
+Prescription	Oak_Clearcut
+StandRanking 	MaxCohortAge
+MinimumAge 60
+
+ForestTypeTable
+>> InclusionRule ageRange percentCells species
+Required 60-450 50 querrubr queralba querelli quermacr	    <<COLLECTIVELY THE OAKS MUST BE ON >=50% OF THE CELLS
+Forbidden 60-450 40 acersacc betualle tiliamer betupapy <<RULE OUT N HDWD STANDS. 			
+
+SiteSelection Complete   
+CohortsRemoved ClearCut  
+
+>>Plant querrubr quermacr	
+
+>>************************************
+		
+Prescription	LowlandConifer_Clearcut
+StandRanking 	MaxCohortAge
+MinimumAge 90
+		
+ForestTypeTable
+>> InclusionRule ageRange percentCells species
+Required 90-300 50 picemari larilari 
+Forbidden 60-800 40	thujocci <<avoid cedar swamps.  AUDREY-this does not determine what gets cut, just what stands get included in the list of eligible stands
+
+SiteSelection Complete   
+CohortsRemoved ClearCut  
+
+>>Plant picemari larilari
+
+>>***********************************
+Prescription	Birch_Clearcut << if birch is often mixed with aspen, you might consider merging this with aspen clearcuts
+StandRanking 	MaxCohortAge
+MinimumAge 50
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+
+ForestTypeTable << can be used with trembling and bigtooth aspen and paper birch.
+>> InclusionRule ageRange percentCells species
+Optional 	50-250	highest betupapy
+Optional 	50-250	highest betupapy poputrem popugran << include aspen to help qualify stands with an even mix of aspen and birch, and birch is not quite the highest
+Forbidden 	40-250	highest	poputrem popugran << exclude those qualified stands that are mostly aspen bc they are cut in a different prescription			
+
+SiteSelection Complete
+CohortsRemoved ClearCut  
+		
+>>Plant betupapy <<Regenerate
+
+>>*****************************************	
+Prescription	Hardwood_Clearcut
+StandRanking 	MaxCohortAge
+MinimumAge 90
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+
+ForestTypeTable
+>> InclusionRule ageRange percentCells species
+Required 90-400 50 querrubr acersacc tiliamer	    <<COLLECTIVELY HARDWOODS MUST BE ON >=50% OF THE CELLS
+>>You may instead want to include a lot of "Optional" statements to define the many ways to get a hardwood type
+Forbidden 60-450 50 querrubr queralba querelli quermacr	<<RULE OUT OAK STANDS, which are harvested in another prescription.  RULE OUT OTHER SPP?
+Forbidden 30-80 highest poputrem popugran popubals	<<rule out aspen stands
+
+SiteSelection Complete
+CohortsRemoved ClearCut  
+		
+>>Plant acersacc tiliamer <<regenerate
+
+>>**************************************** 
+Prescription RPine_Clearcut_state		
+StandRanking 	MaxCohortAge	
+MinimumAge 110	
+
+ForestTypeTable << red pine
+>> InclusionRule ageRange percentCells species
+Required 110-450 highest pinuresi <<MIN AGE=50 or 60? MAX AGE?
+
+SiteSelection Complete
+CohortsRemoved ClearCut
+Plant pinuresi pinustro			<<REPLANT?
+
+>>**********************************************
+>>  UNEVEN-AGED PRESCRIPTIONS
+>>**********************************************
+Prescription  Hardwoods_Unevenaged
+StandRanking 	MaxCohortAge
+MinimumAge 50
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+	
+ForestTypeTable << Northern Hardwoods
+>> InclusionRule ageRange percentCells species << you can use the same rules you used for hardwod_Clearcut
+Optional 50-400 highest acersacc betualle querrubr tiliamer acerrubr	
+Optional 50-400 highest acerrubr  				<< allows red maple stands to qualify
+Forbidden 50-400 highest querelli queralba quermacr	<<eliminates oak dominated stands	
+
+SiteSelection PatchCutting   20%  1 
+MinTimeSinceDamage 15 
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+		acersacc	50-450		(40%)	
+		tiliamer	50-400		(40%)
+		fraxamer	50-400		(100%)
+		fraxnigr	50-400		(100%)
+		fraxpenn	50-400		(100%)
+		betualle	50-400		(20%) 
+		acerrubr	50-400		(20%)
+		queralba	50-400		(20%)
+		querelli	50-400		(20%)
+		querrubr 	50-400		(20%)
+		quermacr	50-400		(20%)
+		popubals	All
+		popudelt	All
+		poputrem	All		
+		popugran	All
+		betupapy	All
+		ulmuamer	40-300		(100%)	
+		ulmurubr	40-200		(100%)
+		pinuresi	All
+		pinustro	All
+		abiebals	All
+		acernegu	All
+		larilari	All
+		ostrvirg	All
+		piceglau	All
+		picemari	All
+		pinubank	All
+		prunpens	All
+		prunsero	All
+		prunvirg	All
+		salix 		All
+		thujocci	All
+		
+		
+>>*****************************************
+Prescription  Pine_Unevenaged << Red and white pine only 
+StandRanking 	MaxCohortAge
+MinimumAge 80
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+	
+ForestTypeTable << Red and white PINE
+>> InclusionRule ageRange percentCells species
+Optional	80-350 highest	pinustro  
+Optional	80-350 highest	pinuresi
+Optional	80-350	50	pinustro pinuresi
+Forbidden	10-250	highest	pinubank
+
+SiteSelection PatchCutting   20%   1 
+MinTimeSinceDamage 20 
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+	pinustro  1-79 (0%) 80-450 (40%)
+	pinuresi  1-79 (0%) 80-450 (40%)
+		abiebals	All
+		acernegu	All
+		acerrubr	All
+		acersacc	All
+		betualle	All
+		betupapy	All
+		fraxamer	All
+		fraxnigr	All
+		fraxpenn	All
+		larilari	All
+		ostrvirg	All
+		piceglau	All
+		picemari	All
+		pinubank	All
+		popubals	All
+		popudelt	All
+		popugran	All
+		poputrem	All
+		prunpens	All
+		prunsero	All
+		prunvirg	All
+		queralba	All
+		querelli	All 
+		quermacr	All 
+		querrubr	All 
+		salix 		All
+		thujocci	All
+		tiliamer	All
+		ulmuamer	All	
+		ulmurubr	All	
+
+>>*****************************************
+Prescription  Oak_Unevenaged  << Which oaks should this prescription target?  All oaks?
+StandRanking 	MaxCohortAge
+MinimumAge 60		
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+
+ForestTypeTable << oak
+>> InclusionRule ageRange percentCells species
+Required 60-450 50 querrubr queralba querelli quermacr  
+Forbidden 60-450 40 acersacc betualle betupapy 		<<RULE OUT N HDWD STANDS.
+
+SiteSelection PatchCutting   20%   1 << this is group selection, using 1 ha openings, and cutting 20% of stand area
+MinTimeSinceDamage 15
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+	abiebals	60-450	(20%)
+	acernegu	60-450	(20%)
+	acerrubr	60-450	(20%)
+	acersacc	60-450	(20%)
+	betualle	60-450	(20%)
+	betupapy	All
+	fraxamer	All
+	fraxnigr	All
+	fraxpenn	All
+	larilari	60-450	(20%)
+	picemari	60-450	(20%)
+	pinubank	60-450	(20%)
+	pinuresi	60-450	(20%)
+	popubals	All
+	popugran	All
+	poputrem	All
+	queralba	60-300(30%)   <<Remove about one third of biomass in all oaks.
+	querelli	60-170(30%) 
+	quermacr	60-400(30%) 
+	querrubr	60-250(30%) 
+	tiliamer	60-450	(20%)
+	ulmuamer	60-300	(20%)	
+	ulmurubr	60-200	(20%)
+	pinustro	All
+	ostrvirg	All
+	piceglau	All
+	popudelt	All
+	prunpens	All
+	prunsero	All
+	prunvirg	All
+	salix 		All
+	thujocci	All
+
+	
+>>**********************************************
+
+Prescription  BlackAsh_Unevenaged
+StandRanking 	MaxCohortAge
+MinimumAge 60		
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+	
+ForestTypeTable << BlackAsh
+>> InclusionRule ageRange percentCells species
+Optional 60-200 highest fraxnigr fraxpenn
+Optional 60-200 50	fraxnigr
+Forbidden 1-800	40	thujocci	
+Forbidden 40-200 50	popubals popudelt popugran poputrem
+
+SiteSelection PatchCutting   30% 1
+MinTimeSinceDamage 15 
+CohortsRemoved	SpeciesList
+		>>Species 	Selection 
+		>>-------	--------
+		fraxamer	All
+		fraxnigr	All
+		fraxpenn	All
+		ulmuamer	60-300	(40%)	
+		ulmurubr	60-200	(40%)
+		pinuresi	All
+		pinustro	All
+		abiebals	All
+		acernegu	All
+		acerrubr	All
+		acersacc	All
+		betualle	All
+		betupapy	All
+		larilari	All
+		ostrvirg	All
+		piceglau	All
+		picemari	All
+		pinubank	All
+		popubals	All
+		popudelt	All
+		popugran	All
+		poputrem	All
+		prunpens	All
+		prunsero	All
+		prunvirg	All
+		queralba	All
+		querelli	All 
+		quermacr	All 
+		querrubr	All 
+		salix 		All
+		thujocci	All
+		tiliamer	All
+		
+>>Plant picemari larilari betualle celtis << regen for future of EAB, including somelowland hardwoods
+		
+>>**********************************************
+
+Prescription  SpruceFir_Unevenaged
+StandRanking 	MaxCohortAge
+MinimumAge 50
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+	
+ForestTypeTable << SpruceFir
+>> InclusionRule ageRange percentCells species
+Optional	50-100 highest piceglau abiebals
+Optional	50-200 50	piceglau abiebals <<qualifies stands that are not dominated by spruce-fir, but they do occupy >50% of cells
+Forbidden	20-200 40	poputrem popugran betupapy 	
+
+SiteSelection PatchCutting   30% 1
+MinTimeSinceDamage 20 
+CohortsRemoved	SpeciesList
+		>>Species 	Selection
+		>>-------	--------
+		abiebals	50-400	(30%)
+		betupapy	All
+		fraxamer	All
+		fraxnigr	All
+		fraxpenn	All
+		piceglau	50-400	(30%)
+		picemari	50-400	(30%)
+		pinubank	50-400	(30%)
+		popubals	All	
+		popudelt	All
+		popugran	All
+		poputrem	All
+		ulmuamer	50-300	(30%)	
+		ulmurubr	50-200	(30%)
+		pinuresi	All
+		pinustro	All
+		acernegu	All
+		acerrubr	All
+		acersacc	All
+		betualle	All
+		larilari	All
+		ostrvirg	All
+		prunpens	All
+		prunsero	All
+		prunvirg	All
+		queralba	All
+		querelli	All 
+		quermacr	All 
+		querrubr	All 
+		salix 		All
+		thujocci	All
+		tiliamer	All														
+				
+>>*****************************************
+>>  THINNING PRESCRIPTIONS
+>>*****************************************
+Prescription  Thinning_RedPine  
+StandRanking  MaxCohortAge <<THe oldest stands are excluded via the inclusion rule, so we should thin oldest first to reflect likely silvicultural practice
+MinimumAge 30		
+MaximumAge 80	<<Older stands not included for thinning, but they would be eligible for clearcutting
+
+ForestTypeTable << 
+>> InclusionRule ageRange percentCells species
+Optional 30-80 highest pinuresi	<<younger than MinimumAge is used just for typing purposes here
+Optional 30-80 highest pinustro
+Optional 30-80 50 pinuresi pinustro
+
+SiteSelection Complete
+MinTimeSinceDamage 20 
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+		pinuresi	30-100	(30%)
+		pinustro	30-100	(30%)
+		abiebals	All
+		acernegu	All
+		acerrubr	All
+		acersacc	All
+		betualle	All
+		betupapy	All
+		fraxamer	All
+		fraxnigr	All
+		fraxpenn	All
+		larilari	All
+		ostrvirg	All
+		piceglau	All
+		picemari	All
+		pinubank	All
+		popubals	All
+		popudelt	All
+		popugran	All
+		poputrem	All
+		prunpens	All
+		prunsero	All
+		prunvirg	All
+		queralba	All
+		querelli	All 
+		quermacr	All 
+		querrubr	All 
+		salix 		All
+		thujocci	All
+		tiliamer	All
+		ulmuamer	All	
+		ulmurubr	All		
+
+>>***************************		
+Prescription  Thinning_SpruceFir    
+>>StandRanking  MaxCohortAge  <<THe oldest stands are excluded via the inclusion rule, so we should thin oldest first to reflect likely silvicultural practice
+StandRanking 	MaxCohortAge
+MinimumAge 30		
+MaximumAge 80	
+
+ForestTypeTable << spruce-fir
+>> InclusionRule ageRange percentCells species
+Optional 30-40 highest piceglau << either spruce or fir can qualify the stand
+Optional 30-50 highest abiebals << either spruce or fir can qualify the stand
+Optional 30-80 50 piceglau abiebals <<together they can qualify the stand. You could stipulate that together they must be Highest
+Forbidden 20-80	highest poputrem popugran betupapy 	
+
+SiteSelection Complete 
+MinTimeSinceDamage 20 
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+		abiebals	30-80		(30%)	
+		piceglau	30-80		(30%)
+		pinuresi	All
+		acernegu	All
+		acerrubr	All
+		acersacc	All
+		betualle	All
+		betupapy	All
+		fraxamer	All
+		fraxnigr	All
+		fraxpenn	All
+		larilari	All
+		ostrvirg	All
+		pinustro	All
+		picemari	All
+		pinubank	All
+		popubals	All
+		popudelt	All
+		popugran	All
+		poputrem	All
+		prunpens	All
+		prunsero	All
+		prunvirg	All
+		queralba	All
+		querelli	All 
+		quermacr	All 
+		querrubr	All 
+		salix 		All
+		thujocci	All
+		tiliamer	All
+		ulmuamer	All	
+		ulmurubr	All
+		
+>>*****************************************
+Prescription  Thinning_Aspen  	<<Assumes thinning from below.  ARE OTHER SPP THINNED?
+>>StandRanking  MaxCohortAge  <<THe oldest stands are excluded via the inclusion rule, so we should thin oldest first to reflect likely silvicultural practice
+StandRanking 	Random  
+MinimumAge 20		
+MaximumAge 40
+
+ForestTypeTable 
+>> InclusionRule ageRange percentCells species
+Required 10-40 50 poputrem popugran <<The 2 "Required" statements can be deleted if stands are not required to have BOTH aspen AND hardwood
+Forbidden 10-50 highest abiebals piceglau << exclude spruce-fir stands
+>> Need to exclude stands targeted for unevenaged_Hardwooods?  Other similar types targeted for other prescriptons? 
+
+
+SiteSelection Complete 
+MinTimeSinceDamage 15
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+		betupapy	30-49		(33%)
+		poputrem	30-39		(33%)
+		popugran	30-39		(33%)
+		popubals 	30-39		(33%)
+		popudelt	30-39		(33%)
+		abiebals	All
+		acernegu	All
+		acerrubr	All
+		acersacc	All
+		betualle	All
+		fraxamer	All
+		fraxnigr	All
+		fraxpenn	All
+		larilari	All
+		ostrvirg	All
+		pinustro	All
+		piceglau	All
+		picemari	All
+		pinuresi	All
+		pinubank	All
+		prunpens	All
+		prunsero	All
+		prunvirg	All
+		queralba	All
+		querelli	All 
+		quermacr	All 
+		querrubr	All 
+		salix 		All
+		thujocci	All
+		tiliamer	All
+		ulmuamer	All	
+		ulmurubr	All
+
+>> -----------------------------------------------------------
+HarvestImplementations		
+>> MgmtArea Descriptions:					
+>> 1 = CNF Harvest
+>> 2 = CNF_NoHarvest
+>> 3 = PNIF_NoHarvest
+>> 4 = PNIF_Harvest
+>> 5 = PIF
+>> 6 = MN_state_Harvest
+>> 7 = MN_state_NoHarvest
+>> 8 = County
+>> 9 = Misc_NoHarvest
+
+>>ma	presc			target%	start	stop	COMMENTS
+1	JPine_Clearcut	0.0681%	0	100
+4	JPine_Clearcut	0.1632%	0	100
+5	JPine_Clearcut	0.2324%	0	100
+6	JPine_Clearcut	0.3141%	0	100
+8	JPine_Clearcut	0.4810%	0	100
+10	JPine_Clearcut	0.4615%	0	100
+1	RPine_Clearcut	0.0454%	0	100
+4	RPine_Clearcut	0.1088%	0	100
+5	RPine_Clearcut	0.1549%	0	100
+6	RPine_Clearcut	0.7094%	0	100
+8	RPine_Clearcut	0.0016%	0	100
+10	RPine_Clearcut	0.3077%	0	100
+1	SpruceFir_Clearcut	0.0681%	0	100
+4	SpruceFir_Clearcut	0.1632%	0	100
+5	SpruceFir_Clearcut	0.2324%	0	100
+6	SpruceFir_Clearcut	0.6945%	0	100
+8	SpruceFir_Clearcut	0.0120%	0	100
+10	SpruceFir_Clearcut	0.4615%	0	100
+1	Aspen_Clearcut	1.7242%	0	100
+4	Aspen_Clearcut	4.1343%	0	100
+5	Aspen_Clearcut	5.8876%	0	100
+6	Aspen_Clearcut	6.7439%	0	100
+8	Aspen_Clearcut	6.0928%	0	100
+10	Aspen_Clearcut	14.0297%	0	100
+1	Oak_Clearcut	0.0454%	0	100
+4	Oak_Clearcut	0.1088%	0	100
+5	Oak_Clearcut	0.1549%	0	100
+6	Oak_Clearcut	0.5193%	0	100
+8	Oak_Clearcut	0.0401%	0	100
+10	Oak_Clearcut	0.3077%	0	100
+1	LowlandConifer_Clearcut	0.1361%	0	100
+4	LowlandConifer_Clearcut	0.3264%	0	100
+5	LowlandConifer_Clearcut	0.4648%	0	100
+6	LowlandConifer_Clearcut	1.2648%	0	100
+8	LowlandConifer_Clearcut	0.4810%	0	100
+10	LowlandConifer_Clearcut	0.4615%	0	100
+1	Birch_Clearcut	0.1134%	0	100
+4	Birch_Clearcut	0.2720%	0	100
+5	Birch_Clearcut	0.3873%	0	100
+6	Birch_Clearcut	0.3832%	0	100
+8	Birch_Clearcut	0.4008%	0	100
+10	Birch_Clearcut	0.3846%	0	100
+1	Hardwood_Clearcut	0.0681%	0	100
+4	Hardwood_Clearcut	0.1632%	0	100
+5	Hardwood_Clearcut	0.2324%	0	100
+6	Hardwood_Clearcut	0.3452%	0	100
+8	Hardwood_Clearcut	0.4810%	0	100
+10	Hardwood_Clearcut	0.4615%	0	100
+1	Pine_Unevenaged	0.0422%	0	100
+4	Pine_Unevenaged	0.1011%	0	100
+5	Pine_Unevenaged	0.0225%	0	100
+6	Pine_Unevenaged	0.1318%	0	100
+1	Oak_Unevenaged	0.9382%	0	100
+4	Oak_Unevenaged	1.7998%	0	100
+5	Oak_Unevenaged	0.2470%	0	100
+6	Oak_Unevenaged	0.1050%	0	100
+10	Oak_Unevenaged	0.0184%	0	100
+1	Hardwoods_Unevenaged	0.1544%	0	100
+4	Hardwoods_Unevenaged	0.7404%	0	100
+5	Hardwoods_Unevenaged	0.2032%	0	100
+6	Hardwoods_Unevenaged	0.3452%	0	100
+10	Hardwoods_Unevenaged	0.3033%	0	100
+1	BlackAsh_Unevenaged	0.0171%	0	100
+4	BlackAsh_Unevenaged	0.0409%	0	100
+5	BlackAsh_Unevenaged	0.0112%	0	100
+6	BlackAsh_Unevenaged	0.8079%	0	100
+10	BlackAsh_Unevenaged	0.0084%	0	100
+1	SpruceFir_Unevenaged	0.0102%	0	100
+4	SpruceFir_Unevenaged	0.0123%	0	100
+5	SpruceFir_Unevenaged	0.0067%	0	100
+6	SpruceFir_Unevenaged	2.9857%	0	100
+10	SpruceFir_Unevenaged	0.0050%	0	100
+1	Thinning_RedPine 	2.5753%	0	100
+4	Thinning_RedPine	3.0875%	0	100
+5	Thinning_RedPine	2.2455%	0	100
+6	Thinning_RedPine	4.0470%	0	100
+8	Thinning_RedPine	0.0206%	0	100
+10	Thinning_RedPine	0.8044%	0	100
+1	Thinning_SpruceFir	0.6116%	0	100
+4	Thinning_SpruceFir	0.7333%	0	100
+5	Thinning_SpruceFir	0.5333%	0	100
+6	Thinning_SpruceFir	1.3936%	0	100
+8	Thinning_SpruceFir	0.9790%	0	100
+10	Thinning_SpruceFir	0.1910%	0	100
+1	Thinning_Aspen  	0.0322%	0	100
+4	Thinning_Aspen 	0.0772%	0	100
+5	Thinning_Aspen 	0.0281%	0	100
+10	Thinning_Aspen 	0.0101%	0	100
+
+
+PrescriptionMaps	harvest/prescripts-{timestep}.img
+BiomassMaps		harvest/biomass-removed-{timestep}.img
+EventLog            harvest-event-test-log.csv
+SummaryLog	    harvest/summary-log.csv
+
+

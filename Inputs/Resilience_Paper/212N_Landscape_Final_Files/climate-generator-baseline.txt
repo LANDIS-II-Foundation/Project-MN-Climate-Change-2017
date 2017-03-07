@@ -1,0 +1,13 @@
+LandisData "Climate Config"				
+		
+>>-----daily_ipccclimate_degC_mm/day-units-----and----monthly_PRISM-------
+
+ClimateTimeSeries			Daily_RandomYears
+ClimateFile				"UofIdaho_DailyBaseline_01082015.csv"
+ClimateFileFormat			Daily_Temp-K_Precip-mmDay
+
+SpinUpClimateTimeSeries			Daily_RandomYears
+SpinUpClimateFile			"UofIdaho_DailyBaseline_01082015.csv"
+SpinUpClimateFileFormat			Daily_Temp-K_Precip-mmDay
+
+

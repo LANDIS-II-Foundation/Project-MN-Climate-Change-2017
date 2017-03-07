@@ -1,0 +1,38 @@
+LandisData	"Scenario"	
+
+Duration 	100
+
+Species		"CNF_species-5.01.15.txt"
+
+Ecoregions	"Ecoregion.txt"
+
+EcoregionsMap	"EcoMap_I2_nomiss.img"	
+
+CellLength	200	<< meters
+
+>> Succession Extension	Initialization File
+>>---------------------------------------------------	
+"Century Succession"		"Century_succession-4ha_12.15.15.txt"
+
+
+>> Disturbance Extensions	Initialization File
+>>---------------------------------------------------	
+"Base Wind" 			"Wind_400WRP_12.06.15.txt"
+"Linear Wind"			"LinearWind_Input_120215.txt"
+"Leaf Biomass Harvest"		 "Harvest_BAU_120315.txt"
+>>   "Dynamic Leaf Biomass Fuels"	 "fuels-DFFS_AFRI.txt"
+>>  "Dynamic Fire System"	"fire-DFFS_AFRI.txt"
+
+
+DisturbancesRandomOrder	no
+
+
+>> Output Extensions	Initialization File
+>>---------------------------------------------------	
+"Output Leaf Biomass"	    "output-leaf-biomass.txt"
+>>"Output Biomass-by-Age"		output-biomass-by-age.txt
+"Output Leaf Biomass Reclass"	"output-biomass-reclass_60215.txt"
+>>"Output Max Species Age"    CNF_max-spp-age.output.txt
+
+
+>>RandomNumberSeed	4357

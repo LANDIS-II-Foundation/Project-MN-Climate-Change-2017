@@ -1,0 +1,51 @@
+LandisData "Base Wind"			
+
+Timestep 10				
+
+>>Initially using the same value across the landscape 60y period
+>>Will refine it by ecoregion later.
+>>
+>>Ecoregion MaxSize  MeanSize MinSize WindRotationPeriod
+>>--------------------------------------------------------------------				
+MN100	796	77	4	90
+MN101	4520	417	4	90
+MN102	796	77	4	90
+MN103	406	105	4	90
+MN104	796	77	4	90
+MN200	4520	417	4	90
+MN201	4520	417	4	90
+MN202	4790	105	4	90
+MN203	4790	105	4	90
+MN204	4520	417	4	90
+MN300	406	105	4	90
+MN301	406	105	4	90
+MN302	406	105	4	90
+MN303	406	105	4	90
+MN304	406	105	4	90
+MN400	4790	105	4	90
+MN401	4790	105	4	90
+MN402	4790	105	4	90
+MN403	4790	105	4	90
+MN404	4520	417	4	90
+MN500	4790	105	4	90
+MN501	4790	105	4	90
+MN502	4790	105	4	90
+MN503	4790	105	4	90
+MN504	4790	105	4	90
+
+
+>>These came from Figure 3 in Rich et al (2007) in J of Ecology, Figure 3 w/intensity=0.125
+WindSeverities				
+
+>>		Cohort Age		Mortality
+>>Severity 	% of longevity		Probability	
+>>-----------------------------------------------------				
+5		0% to 20%		0.2
+4		20% to 40%		0.25
+3		40% to 60%		0.3
+2		60% to 80%		0.5
+1		80% to 100%		0.6
+
+
+MapNames wind/severity-{timestep}.img
+LogFile wind/log.csv
