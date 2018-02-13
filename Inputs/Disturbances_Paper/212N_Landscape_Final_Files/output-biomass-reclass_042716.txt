@@ -1,0 +1,73 @@
+LandisData  "Output Leaf Biomass Reclass"
+
+Timestep   10
+
+
+ReclassMaps
+
+>> Map Name    Forest Type    Species
+>> --------    -------------  -------
+
+>>These are the forest types that Kelly et al. are most interested in.
+
+reclass1 -> 	Aspen_901		QuakAspen BigTAspen PaperBirch -RedPine -BlackSpruce
+		BlAshElmRedMap_701	BlackAsh  AmericanElm	SlipperyElm
+		Tamarack_126		Tamarack 		
+		BlackSpruce_125		BlackSpruce 
+		PaperBirch_902		PaperBirch  -RedPine
+		RedPine_102  		RedPine 
+		HardMaplBassw_805_520	Basswood Hophornbm SugarMaple BurOak
+		Oaks_50X		WhiteOak  RedOak Hophornbm Cottonwood  BurOak
+		JackPine_101  		JackPine  
+               	WhitePine_103  		WhitePine
+               	BalsamFir_121		BalsamFir
+		WhiteSpruce_122		WhiteSpruce
+		Cedar_127		WhiteCedar
+		WhitePineGroup_40X	WhitePine RedOak JackPine RedPine PaperBirch NPinOak	
+		ElmAsh_517		BlackAsh GreenAsh
+		RedMapleOak_519		RedMaple 
+		SugMapBeechYB_801	SugarMaple YellowBirch 
+		BalsamPop_904		BalsmPoplar	
+
+>>These are the ones that correspond to FIA forest types.  Listed in order of % in FIA plots.
+
+reclass2 -> 	Aspen_901		QuakAspen BigTAspen PaperBirch -RedPine -BlackSpruce
+		BlAshElmRedMap_701	BlackAsh  AmericanElm	SlipperyElm
+		Tamarack_126		Tamarack 		
+		BlackSpruce_125		BlackSpruce 
+		PaperBirch_902		PaperBirch  -RedPine
+		RedPine_102  		RedPine 
+		HardMaplBassw_805	Basswood Hophornbm SugarMaple
+		WhiteRedOak_503		WhiteOak  RedOak Hophornbm Cottonwood
+		JackPine_101  		JackPine  
+               	WhitePine_103  		WhitePine
+               	BalsamFir_121		BalsamFir
+		WhiteSpruce_122		WhiteSpruce
+		Cedar_127		WhiteCedar
+		WhitePineGroup_401	WhitePine RedOak 
+		OtherPineHard_409	JackPine RedPine PaperBirch NPinOak
+		RedOak_505		RedOak
+		BurOak_509		BurOak
+		ElmAsh_517		BlackAsh GreenAsh
+		RedMapleOak_519		RedMaple 
+		MixHardwood_520		BurOak Basswood
+		BalsamPop_904		BalsmPoplar			
+		RiverBirch_702		BalsmPoplar
+		Willow_704		Willow
+		HackElmGAsh_706		Hackberry MtnMaple GreenAsh
+		Elm_707			AmericanElm SlipperyElm		
+		RedMaple_708		RedMaple
+		SugMapBeechYB_801	SugarMaple YellowBirch 
+		RedMaple_809		RedMaple	
+		PinCherry_905		PinCherry		
+		OtherHard_962		Tamarack Hophornbm BalsamFir	
+
+>> these correspond to the modeled wildlife output extension classes
+reclass3 ->	LowlandCon	Tamarack BlackSpruce WhiteCedar
+		LowlandHdwd	RedMaple BlackAsh GreenAsh Cottonwood Willow
+		LowlandMix	Tamarack BlackSpruce WhiteCedar RedMaple BlackAsh GreenAsh Cottonwood Willow
+		UplandCon	BalsamFir WhiteSpruce JackPine RedPine WhitePine
+		UplandHdwd	BoxElder SugarMaple MtnMaple YellowBirch PaperBirch Hackberry WhiteAsh Hophornbm BalsmPoplar BigTAspen QuakAspen PinCherry BlackCherry Chokecherry WhiteOak NPinOak BurOak RedOak Basswood AmericanElm SlipperyElm
+		UplandMix	BalsamFir WhiteSpruce JackPine RedPine WhitePine BoxElder SugarMaple MtnMaple YellowBirch PaperBirch Hackberry WhiteAsh Hophornbm BalsmPoplar BigTAspen QuakAspen PinCherry BlackCherry Chokecherry WhiteOak NPinOak BurOak RedOak Basswood AmericanElm SlipperyElm	
+	
+MapFileNames   output-biomass-reclass/bio-{reclass-map-name}-{timestep}.img

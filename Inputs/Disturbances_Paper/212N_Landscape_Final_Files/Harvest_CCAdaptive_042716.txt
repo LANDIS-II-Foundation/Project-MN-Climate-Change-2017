@@ -1,0 +1,963 @@
+
+<<Prescriptions are based on CNF and may need to be renamed as we add other ownerships or management areas
+
+LandisData "Leaf Biomass Harvest"
+Timestep 10  
+
+ManagementAreas 	ManageMap_112215.img
+Stands 			StandMap_112315.img
+<<Prescriptions are based on CNF and may need to be renamed as we add other ownerships or management areas
+
+>>*******************************************
+Prescription JPine_Clearcut
+StandRanking 	MaxCohortAge  
+MinimumAge 50	
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.  <<Stands older than this are not eligible for list
+
+ForestTypeTable 
+>> InclusionRule ageRange percentCells species
+Required	50-250	highest	JackPine  
+		
+SiteSelection Complete
+CohortsRemoved ClearCut
+Plant LodgepPine RedCedar WhitePine	<<convert to lodgepole pine and red cedar and WPine
+
+>>*******************************************
+
+Prescription RPine_Clearcut		
+StandRanking 	MaxCohortAge	
+MinimumAge 80	
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+
+ForestTypeTable << red pine
+>> InclusionRule ageRange percentCells species
+Required 	80-450	highest RedPine
+>>Forbidden	100-350	33	WhitePine << exclude stands with signif component of mature w pine? OR, you could just not cut the old white pine cohorts
+
+SiteSelection Complete 
+CohortsRemoved ClearCut
+		
+Plant RedPine WhitePine	WhiteOak	<<Add other conifers for diversity, replace red pine w white pine and white oak; Ponderosa pine might be another option.
+
+>>*******************************************
+Prescription SpruceFir_Clearcut
+StandRanking 	MaxCohortAge
+MinimumAge 50
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+
+ForestTypeTable << spruce fir
+>> InclusionRule ageRange percentCells species
+Required 50-450 highest WhiteSpruce BalsamFir
+>>Need to exclude stands with certain other conditions but still have mostly spruce-fir??
+
+SiteSelection Complete << 
+CohortsRemoved ClearCut
+
+Plant BalsamFir WhiteSpruce RedCedar	<<Add red cedar for diversity? RedCedar 
+
+>>**************************************** 
+Prescription	Aspen_Clearcut	<<50% of aspen clearcuts use this prescription
+StandRanking 	MaxCohortAge 	
+MinimumAge 40 			<< minimum age required to be added to the list of stands eligible for harvest
+>>MaximumAge	<<Remove the the DOUBLE ">>" to activate and add the correct age.
+		
+ForestTypeTable << Aspen
+>> InclusionRule ageRange percentCells species
+Optional 	40-200	50	QuakAspen BigTAspen Cottonwood BalsmPoplar <<if any of these species (in the age range) are found on at least 50% of the cells in the stand, it qualifies for cutting
+Optional 	40-200	highest	QuakAspen BigTAspen
+Forbidden 	30-200	highest	PaperBirch  <<Exclude birch stands bc they are cut in another prescription
+Forbidden 	100-200	highest	WhiteCedar
+
+SiteSelection Complete
+CohortsRemoved ClearCut  <<remove all cohorts of all species and let stand naturally regenerate
+
+>>*******************************************
+Prescription	Aspen_Clearcut_convert2_WPine	<<16.666667% of aspen clearcuts use this prescription
+StandRanking 	MaxCohortAge 	
+MinimumAge 40		<< minimum age required to be added to the list of stands eligible for harvest
+>>MaximumAge	<<Remove the the DOUBLE ">>" to activate and add the correct age.
+		
+ForestTypeTable << Aspen
+>> InclusionRule ageRange percentCells species
+Optional 	40-200	50	QuakAspen BigTAspen Cottonwood BalsmPoplar <<if any of these species (in the age range) are found on at least 50% of the cells in the stand, it qualifies for cutting
+Optional 	40-200	highest	QuakAspen BigTAspen
+Forbidden 	30-200	highest	PaperBirch  <<Exclude birch stands bc they are cut in another prescription
+Forbidden 	100-200	highest	WhiteCedar
+
+SiteSelection Complete
+>>CohortsRemoved ClearCut  <<remove all cohorts of all species
+CohortsRemoved	SpeciesList  <<this table is an example of the alternative to the ClearCUt command - you specify exactly what gets removed.  You may want to use this format for all clearcuts
+		>>Species 	Age range 2 cut	% of biomass removed from cohorts in that age range
+		>>-------	--------
+>>***************
+		BalsamFir	All 
+		BoxElder	All
+		RedMaple	All
+		SugarMaple	All	<<Hardwoods are favored in another prescription
+		YellowBirch	All
+		PaperBirch	All
+		ShagHickory  	All
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		Tamarack	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		WhitePine	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		RedPine	All
+		BalsmPoplar	30-200	(100%)	<<leave advance regen
+		Cottonwood	30-150	(100%)
+		BigTAspen	30-150	(100%)
+		QuakAspen	30-150	(100%)
+		BlackCherry	All
+		WhiteOak	All	<<Oaks are favored in another prescription
+		NPinOak	All
+		BurOak	All
+		RedOak	All
+		Basswood	All
+		AmericanElm	All
+
+Plant QuakAspen BigTAspen WhitePine	<< Add white pine to these aspen stands for diversity
+>>*******************************************
+Prescription	Aspen_Clearcut_convert2_Oaks	<<16.666667% of aspen clearcuts use this prescription
+StandRanking 	MaxCohortAge 	
+MinimumAge 40		<< minimum age required to be added to the list of stands eligible for harvest
+>>MaximumAge	<<Remove the the DOUBLE ">>" to activate and add the correct age.
+		
+ForestTypeTable << Aspen
+>> InclusionRule ageRange percentCells species
+Optional 	40-200	50	QuakAspen BigTAspen Cottonwood BalsmPoplar <<if any of these species (in the age range) are found on at least 50% of the cells in the stand, it qualifies for cutting
+Optional 	40-200	highest	QuakAspen BigTAspen
+Forbidden 	30-200	highest	PaperBirch  <<Exclude birch stands bc they are cut in another prescription
+
+SiteSelection Complete
+>>CohortsRemoved ClearCut  <<remove all cohorts of all species
+CohortsRemoved	SpeciesList  <<this table is an example of the alternative to the ClearCut command - you specify exactly what gets removed.  You may want to use this format for all clearcuts
+		>>Species 	Age range 2 cut	% of biomass removed from cohorts in that age range
+		>>-------	--------
+>>***************
+		BalsamFir	All 
+		BoxElder	All
+		RedMaple	All
+		SugarMaple	All	<<Hardwoods are favored in another prescription
+		YellowBirch	All
+		PaperBirch	All
+		ShagHickory  	All
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		Tamarack	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		WhitePine	All	<<WPine is favored in another prescription
+		RedPine	All
+		BalsmPoplar	30-200	(100%)	<<leave advance regen
+		Cottonwood	30-150	(100%)
+		BigTAspen	30-150	(100%)
+		QuakAspen	30-150	(100%)
+		BlackCherry	All
+		WhiteOak	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		NPinOak	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		BurOak	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		RedOak	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		Basswood	All
+		AmericanElm	All
+
+Plant QuakAspen BigTAspen WhiteOak NPinOak BurOak RedOak	<< Add all 4 oaks to these aspen stands for diversity
+>>*******************************************
+Prescription	Aspen_Clearcut_convert2_Hardwoods	<<16.666667% of aspen clearcuts use this prescription
+StandRanking 	MaxCohortAge 	
+MinimumAge 40		<< minimum age required to be added to the list of stands eligible for harvest
+>>MaximumAge	<<Remove the the DOUBLE ">>" to activate and add the correct age.
+		
+ForestTypeTable << Aspen
+>> InclusionRule ageRange percentCells species
+Optional 	40-200	50	QuakAspen BigTAspen Cottonwood BalsmPoplar <<if any of these species (in the age range) are found on at least 50% of the cells in the stand, it qualifies for cutting
+Optional 	40-200	highest	QuakAspen BigTAspen
+Forbidden 	30-200	highest	PaperBirch  <<Exclude birch stands bc they are cut in another prescription
+
+SiteSelection Complete
+>>CohortsRemoved ClearCut  <<remove all cohorts of all species
+CohortsRemoved	SpeciesList  <<this table is an example of the alternative to the ClearCUt command - you specify exactly what gets removed.  You may want to use this format for all clearcuts
+		>>Species 	Age range 2 cut	% of biomass removed from cohorts in that age range
+		>>-------	--------
+>>***************
+		BalsamFir	All 
+		BoxElder	All
+		RedMaple	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		SugarMaple	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		YellowBirch	All
+		PaperBirch	All
+		ShagHickory  	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		Tamarack	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		WhitePine	All	<<WPine is favored in another prescription
+		RedPine		All
+		BalsmPoplar	30-200	(100%)	<<leave advance regen
+		Cottonwood	30-150	(100%)
+		BigTAspen	30-150	(100%)
+		QuakAspen	30-150	(100%)
+		BlackCherry	All
+		WhiteOak	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		NPinOak		All	<<Oaks are favored in another prescription
+		BurOak		All
+		RedOak		All
+		Basswood	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		AmericanElm	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+
+Plant QuakAspen BigTAspen SugarMaple RedMaple ShagHickory AmericanElm WhiteOak	<< Add hardwoods to these aspen stands for diversity
+>>*****************************************	
+Prescription	Oak_Clearcut
+StandRanking 	MaxCohortAge
+MinimumAge 60
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+
+ForestTypeTable
+>> InclusionRule ageRange percentCells species
+Required 60-450 50% RedOak WhiteOak NPinOak BurOak	    <<COLLECTIVELY THE OAKS MUST BE ON >=50% OF THE CELLS
+Forbidden 60-450 40% SugarMaple YellowBirch Basswood PaperBirch <<RULE OUT N HDWD STANDS. 
+
+SiteSelection Complete
+CohortsRemoved	SpeciesList  
+		SugarMaple	1-450	(50%)	<<OK to leave some sugar maple because regeneration of oaks is forced by planting
+		WhiteOak	60-450	(100%)
+		NPinOak		60-450	(100%)
+		BurOak		60-450	(100%)
+		RedOak		60-450	(100%)
+		BalsamFir	All  
+		BoxElder	All
+		RedMaple	All
+		MtnMaple	All
+		YellowBirch	All
+		PaperBirch	All
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		RedPine	All
+		LodgepPine	All
+		PonderPine	All
+		WhitePine	All
+		BalsmPoplar	All
+		Cottonwood	All
+		BigTAspen	All
+		QuakAspen	All
+		PinCherry	All
+		BlackCherry	All
+		Chokecherry	All
+		Willow 		All
+		WhiteCedar	All
+		Basswood	All
+		AmericanElm	All	
+		SlipperyElm	All
+ 
+Plant RedOak WhiteOak NPinOak BurOak	<<Regen all 4 oaks for diversity
+
+>>************************************
+Prescription	LowlandConifer_Clearcut
+StandRanking 	MaxCohortAge
+MinimumAge 90
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+		
+ForestTypeTable
+>> InclusionRule ageRange percentCells species
+Required 90-300 50 BlackSpruce Tamarack 
+Forbidden 60-800 40	WhiteCedar <<avoid cedar swamps. This does not determine what gets cut, just what stands get included in the list of eligible stands
+
+SiteSelection Complete
+CohortsRemoved	SpeciesList  
+		SugarMaple	All
+		BalsamFir	All  
+		BoxElder	All
+		RedMaple	All
+		MtnMaple	All
+		YellowBirch	All
+		PaperBirch	All
+		Hackberry 		All
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		RedPine	All
+		LodgepPine	All
+		PonderPine	All
+		WhitePine	All
+		BalsmPoplar	All
+		Cottonwood	All
+		BigTAspen	All
+		QuakAspen	All
+		PinCherry	All
+		BlackCherry	All
+		Chokecherry	All
+		WhiteOak	All
+		NPinOak	All 
+		BurOak	All 
+		RedOak	All 
+		Willow 		All
+		WhiteCedar	All
+		Basswood	All
+		AmericanElm	All	
+		SlipperyElm	All
+
+Plant BlackSpruce Tamarack 		<<Regenerate
+
+>>*******************************************
+Prescription	Birch_Clearcut 
+StandRanking 	MaxCohortAge
+MinimumAge 50
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+
+ForestTypeTable << can be used with trembling and bigtooth aspen and paper birch.
+>> InclusionRule ageRange percentCells species
+Optional 	50-250	highest PaperBirch
+Optional 	50-250	highest PaperBirch QuakAspen BigTAspen << include aspen to help qualify stands with an even mix of aspen and birch, and birch is not quite the highest
+Forbidden 	40-250	highest	QuakAspen BigTAspen << exclude those qualified stands that are mostly aspen bc they are cut in a different prescription			
+
+SiteSelection Complete
+>>CohortsRemoved ClearCut  
+CohortsRemoved	SpeciesList  <<this table is an example of the alternative to the ClearCUt command - you specify exactly what gets removed.  You may want to use this format for all clearcuts
+		>>Species 	Age range 2 cut	% of biomass removed from cohorts in that age range
+		>>-------	--------
+		BalsamFir	All  
+		BoxElder	All
+		RedMaple	All
+		SugarMaple	All
+		MtnMaple	All
+		YellowBirch	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		PaperBirch	30-150	(100%)	<<leave advance regeneration
+		ShagHickory	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		RedPine		All
+		LodgepPine	All
+		PonderPine	All
+		WhitePine	All
+		BalsmPoplar	All
+		Cottonwood	All
+		BigTAspen	All
+		QuakAspen	All
+		PinCherry	All
+		BlackCherry	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		Chokecherry	All
+		WhiteOak	All
+		NPinOak		All 
+		BurOak		All 
+		RedOak		All 
+		Willow 		All
+		WhiteCedar	All
+		Basswood	30-450	(100%)	<<leave younger cohorts (advance regeneration) to allow age-class diversity
+		AmericanElm	All	
+		SlipperyElm	All
+
+Plant Basswood ShagHickory YellowBirch BlackCherry		<<Replace with hardwoods 
+
+>>*****************************************	
+Prescription	Hardwood_Clearcut
+StandRanking 	MaxCohortAge
+MinimumAge 90
+>>MaximumAge	<<Remove the DOUBLE >> to activate and add the correct age.
+
+ForestTypeTable
+>> InclusionRule ageRange percentCells species
+Required 90-400 50 RedOak SugarMaple Basswood	    <<COLLECTIVELY HARDWOODS MUST BE ON >=50% OF THE CELLS
+>>You may instead want to include a lot of "Optional" statements to define the many ways to get a hardwood type
+Forbidden 60-450 50 RedOak WhiteOak NPinOak BurOak	<<RULE OUT OAK STANDS, which are harvested in another prescription.  RULE OUT OTHER SPP?
+Forbidden 30-80 highest QuakAspen BigTAspen BalsmPoplar	<<rule out aspen stands
+
+SiteSelection Complete
+>>CohortsRemoved ClearCut  
+CohortsRemoved	SpeciesList  <<this table is an example of the alternative to the ClearCUt command - you specify exactly what gets removed.  You may want to use this format for all clearcuts
+		>>Species 	Age range 2 cut	% of biomass removed from cohorts in that age range
+		>>-------	--------
+		RedMaple	40-450	(100%)	<<leave advance regenration
+		SugarMaple	40-450	(100%)
+		ShagHickory  	40-450	(100%)
+		RedPine		40-450	(50%)	<<encourage any pine component
+		WhitePine	40-450	(50%)
+		BlackCherry	40-450	(100%) << start cutting this bc it should do well under CC
+		WhiteOak	40-450	(100%)
+		NPinOak		40-450	(100%)
+		BurOak		40-450	(100%)
+		RedOak		40-450	(100%)
+		AmericanElm	40-450	(100%) 
+		BalsamFir	All  
+		BoxElder	All
+		MtnMaple	All
+		YellowBirch	All
+		PaperBirch	All
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		LodgepPine	All
+		PonderPine	All
+		BalsmPoplar	All
+		Cottonwood	All
+		BigTAspen	All
+		QuakAspen	All
+		PinCherry	All
+		Chokecherry	All
+		Willow 		All
+		WhiteCedar	All
+		Basswood	All
+		SlipperyElm	All
+>>If we plant anything, we have to plant everything.  We should just let these regenerate naturally
+>>Plant ShagHickory RedMaple  		<<Add shagbark hickory for diversity
+
+>>**********************************************
+>>  UNEVEN-AGED PRESCRIPTIONS
+>>**********************************************
+Prescription  Hardwoods_Unevenaged
+StandRanking 	MaxCohortAge
+MinimumAge 50
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+	
+ForestTypeTable << Northern Hardwoods
+>> InclusionRule ageRange percentCells species << you can use the same rules you used for hardwod_Clearcut
+Optional 50-400 highest SugarMaple YellowBirch RedOak Basswood	
+Optional 50-400 highest RedMaple  				<< allows red maple stands to qualify
+Forbidden 50-400 highest RedOak NPinOak WhiteOak BurOak	<<eliminates oak dominated stands	
+
+SiteSelection PatchCutting   20%  1 
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+		SugarMaple	50-450		(40%)	
+		Basswood	50-400		(50%) << cut more heavily bc it is a loser under CC
+		WhiteAsh	50-400		(100%)
+		BlackAsh	50-400		(100%) 
+		GreenAsh	50-400		(100%) 
+		YellowBirch	50-400		(50%) << cut more heavily bc it is a loser under CC
+		RedMaple	50-400		(20%)
+		WhiteOak	50-400		(20%)
+		NPinOak		50-400		(20%)
+		RedOak 		50-400		(20%) 
+		BurOak		50-400		(20%) 
+		BalsmPoplar	40-450		(50%) 
+		Cottonwood	40-450		(50%) 
+		QuakAspen	40-450		(100%) << remove aspen and birch
+		BigTAspen	40-450		(100%) 
+		PaperBirch	50-250		(100%) 
+		AmericanElm 	50-400		(20%) <<start cutting elm bc it should do well under CC
+		BlackCherry 	50-400		(20%) <<start cutting cherry bc it should do well under CC
+		ShagHickory	50-400		(20%) <<start cutting hickory bc it should do well under CC
+		BalsamFir	All  
+		BoxElder	All
+		MtnMaple	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		RedPine		All
+		LodgepPine	All
+		PonderPine	All
+		WhitePine	All
+		PinCherry	All
+		Chokecherry	All
+		Willow 		All
+		WhiteCedar	All
+		SlipperyElm	All
+
+
+Plant SugarMaple YellowBirch RedOak Basswood AmericanElm BlackCherry ShagHickory 	<< Add these CC winners
+	
+>>*****************************************
+Prescription  Pine_Unevenaged << Red and white pine only 
+StandRanking 	MaxCohortAge
+MinimumAge 80
+>>MaximumAge	<<Remove the DOUBLE >> to activate and add the correct age.
+	
+ForestTypeTable << Red and white PINE
+>> InclusionRule ageRange percentCells species
+Optional	80-350 highest	WhitePine  
+Optional	80-350 highest	RedPine
+Optional	80-350	50	WhitePine RedPine
+Forbidden	1-250	highest	JackPine
+
+SiteSelection PatchCutting   20%   1 
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+		WhitePine  	1-79 (0%) 80-450 (40%)
+		RedPine  	1-79 (0%) 80-450 (40%) 
+		BalsamFir	All  
+		BoxElder	All
+		RedMaple	All
+		SugarMaple	All
+		MtnMaple	All
+		YellowBirch	All
+		PaperBirch	All
+		ShagHickory	All
+		Hackberry 	All
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		LodgepPine	All
+		PonderPine	All
+		BalsmPoplar	All
+		Cottonwood	All
+		BigTAspen	All
+		QuakAspen	All
+		PinCherry	All
+		BlackCherry	All
+		Chokecherry	All
+		WhiteOak	All
+		NPinOak		All 
+		BurOak		All 
+		RedOak		All 
+		Willow 		All
+		WhiteCedar	All
+		Basswood	All
+		AmericanElm	All	
+		SlipperyElm	All
+
+Plant RedPine WhitePine  <<add a new pine cohort
+
+>>SingleRepeat  	10 
+>>CohortsRemoved	SpeciesList
+>>Hackberry		400 (1%)
+>>Plant RedCedar				<<Add red cedar for diversity?  What about ponerosa pine?
+
+>>*****************************************
+Prescription  Oak_Unevenaged  
+StandRanking 	MaxCohortAge
+MinimumAge 60	
+>>MaximumAge	<<Remove the DOUBLE >> to activate and add the correct age.
+
+ForestTypeTable << oak
+>> InclusionRule ageRange percentCells species
+Required 60-450 50 RedOak WhiteOak NPinOak BurOak  
+Forbidden 60-450 40 SugarMaple YellowBirch PaperBirch 		<<RULE OUT N HDWD STANDS.
+
+SiteSelection PatchCutting   20%   1 << this is group selection, using 1 ha openings, and cutting 20% of stand area
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+	BalsamFir	60-450	(50%) << cut more heavily bc it is a loser under CC
+	BoxElder	60-450	(20%)
+	RedMaple	60-450	(20%)
+	SugarMaple	60-450	(20%)
+	YellowBirch	60-450	(20%)
+	PaperBirch	60-450	(50%) << cut more heavily bc it is a loser under CC
+	WhiteAsh	All
+	BlackAsh	All
+	GreenAsh	All
+	Tamarack	60-450	(50%) << cut more heavily bc it is a loser under CC
+	BlackSpruce	60-450	(50%) << cut more heavily bc it is a loser under CC
+	JackPine	60-450	(50%) << cut more heavily bc it is a loser under CC
+	RedPine		60-450	(50%) << cut more heavily bc it is a loser under CC
+	BalsmPoplar	60-450	(50%) << cut more heavily bc it is a loser under CC
+	BigTAspen	60-450	(50%) << cut more heavily bc it is a loser under CC
+	QuakAspen	60-450	(50%) << cut more heavily bc it is a loser under CC
+	WhiteOak	60-300(30%)   <<Remove about one third of biomass in all oaks.
+	NPinOak		60-170(30%) 
+	BurOak		60-400(30%)  
+	RedOak		60-250(30%)  
+	Basswood	60-450	(50%) << cut more heavily bc it is a loser under CC
+		MtnMaple	All
+		ShagHickory	All
+		Hackberry 		All
+		RedCedar	All
+		WhiteSpruce	All
+		LodgepPine	All
+		PonderPine	All
+		WhitePine	All
+		PinCherry	All
+		BlackCherry	All
+		Chokecherry	All
+		Willow 		All
+		WhiteCedar	All
+		AmericanElm	All	
+		SlipperyElm	All
+
+	
+				<<Add any species for diversity??
+>>**********************************************
+
+Prescription  BlackAsh_Unevenaged	<<DROP this prescription under CC and just let black ash stands go??
+StandRanking 	MaxCohortAge
+MinimumAge 60		
+>>MaximumAge	<<Remove the the DOUBLE >> to activate and add the correct age.
+	
+ForestTypeTable << BlackAsh
+>> InclusionRule ageRange percentCells species
+Optional 60-200 highest BlackAsh GreenAsh
+Optional 60-200 50	BlackAsh
+Forbidden 1-800	40	WhiteCedar	
+Forbidden 40-200 50	BalsmPoplar Cottonwood BigTAspen QuakAspen
+
+SiteSelection PatchCutting   30% 1
+CohortsRemoved	SpeciesList
+		>>Species 	Selection 
+		>>-------	--------
+		WhiteAsh	All
+		BlackAsh	All
+		GreenAsh	All
+		BalsamFir	All  
+		BoxElder	All
+		RedMaple	All
+		SugarMaple	All
+		MtnMaple	All
+		YellowBirch	All
+		PaperBirch	All
+		ShagHickory	All
+		Hackberry 	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		RedPine		All
+		LodgepPine	All
+		PonderPine	All
+		WhitePine	All
+		BalsmPoplar	All
+		Cottonwood	All
+		BigTAspen	All
+		QuakAspen	All
+		PinCherry	All
+		BlackCherry	All
+		Chokecherry	All
+		WhiteOak	All
+		NPinOak		All 
+		BurOak		All 
+		RedOak		All 
+		Willow 		All
+		WhiteCedar	All
+		Basswood	All
+		AmericanElm	All	
+		SlipperyElm	All
+
+
+Plant BlackSpruce Tamarack YellowBirch Hackberry << regen for future of EAB, including somelowland hardwoods; same as BAU
+		
+				
+>>*****************************************
+>>  THINNING PRESCRIPTIONS			<<LEAVE these to be implemented as the species are gradually replaced by other prescriptions
+>>****************************************
+Prescription  Thinning_RedPine  
+StandRanking  MaxCohortAge <<THe oldest stands are excluded via the inclusion rule, so we should thin oldest first to reflect likely silvicultural practice
+MinimumAge 30		
+MaximumAge 80	<<Older stands not included for thinning, but they would be eligible for clearcutting
+
+ForestTypeTable << 
+>> InclusionRule ageRange percentCells species
+Required 30-80 highest RedPine	WhitePine <<younger than MinimumAge is used just for typing purposes here
+
+SiteSelection Complete
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+		RedPine	30-100	(30%)
+		WhitePine	30-100	(30%)
+		WhiteSpruce	30-100	(30%)
+		QuakAspen	30-100	(30%)
+		BigTAspen	30-100	(30%)
+		BalsamFir	30-100	(30%)
+		JackPine	30-100  (30%) 
+		PaperBirch	30-100	(30%)
+		BoxElder	All
+		RedMaple	All
+		SugarMaple	All
+		MtnMaple	All
+		YellowBirch	All
+		ShagHickory	All
+		Hackberry 	All
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		BlackSpruce	All 
+		LodgepPine	All
+		PonderPine	All
+		BalsmPoplar	All
+		Cottonwood	All
+		PinCherry	All
+		BlackCherry	All
+		Chokecherry	All
+		WhiteOak	All
+		NPinOak		All 
+		BurOak		All 
+		RedOak		All 
+		Willow 		All
+		WhiteCedar	All
+		Basswood	All
+		AmericanElm	All	
+		SlipperyElm	All
+
+>>***************************		
+Prescription  Thinning_SpruceFir    
+>>StandRanking  MaxCohortAge  <<THe oldest stands are excluded via the inclusion rule, so we should thin oldest first to reflect likely silvicultural practice
+StandRanking 	MaxCohortAge
+MinimumAge 30		
+MaximumAge 80	
+
+ForestTypeTable << spruce-fir
+>> InclusionRule ageRange percentCells species
+Optional 30-40 highest WhiteSpruce << either spruce or fir can qualify the stand
+Optional 30-50 highest BalsamFir << either spruce or fir can qualify the stand
+Optional 30-80 50 WhiteSpruce BalsamFir <<together they can qualify the stand. You could stipulate that together they must be Highest
+Forbidden	1-400	40	QuakAspen BigTAspen PaperBirch 	
+
+SiteSelection Complete 
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+		BalsamFir	30-80		(30%)	
+		PaperBirch	30-80		(30%) 
+		WhiteSpruce	30-80		(30%)
+		QuakAspen 	30-80		(30%)
+		BigTAspen 	30-80		(30%)
+		BalsmPoplar 	30-80		(30%)
+		BoxElder	All
+		RedMaple	All
+		SugarMaple	All
+		MtnMaple	All
+		YellowBirch	All
+		ShagHickory	All
+		Hackberry 	All
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		BlackSpruce	All 
+		JackPine	All
+		RedPine		All
+		LodgepPine	All
+		PonderPine	All
+		WhitePine	All
+		Cottonwood	All
+		PinCherry	All
+		BlackCherry	All
+		Chokecherry	All
+		WhiteOak	All
+		NPinOak		All 
+		BurOak		All 
+		RedOak		All 
+		Willow 		All
+		WhiteCedar	All
+		Basswood	All
+		AmericanElm	All	
+		SlipperyElm	All
+
+		
+>>*****************************************
+Prescription  Thinning_Aspen  	<<Assumes thinning from below.  ARE OTHER SPP THINNED?
+>>StandRanking  MaxCohortAge  <<THe oldest stands are excluded via the inclusion rule, so we should thin oldest first to reflect likely silvicultural practice
+StandRanking 	Random  
+MinimumAge 20		
+MaximumAge 40
+
+ForestTypeTable 
+>> InclusionRule ageRange percentCells species
+Required 10-40 50 QuakAspen BigTAspen <<The 2 "Required" statements can be deleted if stands are not required to have BOTH aspen AND hardwood
+Forbidden 10-50 highest BalsamFir WhiteSpruce << exclude spruce-fir stands
+>> Need to exclude stands targeted for unevenaged_Hardwooods?  Other similar types targeted for other prescriptons? 
+
+
+SiteSelection Complete 
+CohortsRemoved	SpeciesList
+	>>Species 	Selection
+		>>-------	--------
+		PaperBirch	30-49		(33%)
+		QuakAspen	30-39		(33%)
+		BigTAspen	30-39		(33%)
+		BalsmPoplar 	30-39		(33%)
+		Cottonwood	30-39		(33%)
+		BalsamFir	All  
+		BoxElder	All
+		RedMaple	All
+		SugarMaple	All
+		MtnMaple	All
+		YellowBirch	All
+		ShagHickory	All
+		Hackberry 	All
+		WhiteAsh	All
+		BlackAsh	All 
+		GreenAsh	All
+		RedCedar	All
+		Tamarack	All
+		Hophornbm	All
+		WhiteSpruce	All
+		BlackSpruce	All 
+		JackPine	All
+		RedPine		All
+		LodgepPine	All
+		PonderPine	All
+		WhitePine	All
+		PinCherry	All
+		BlackCherry	All
+		Chokecherry	All
+		WhiteOak	All
+		NPinOak		All 
+		BurOak		All 
+		RedOak		All 
+		Willow 		All
+		WhiteCedar	All
+		Basswood	All
+		AmericanElm	All	
+		SlipperyElm	All
+
+>> -----------------------------------------------------------
+HarvestImplementations		<<  MELISSA - We have not looked at the implmentation table - leaving that for you **********************************
+>> MgmtArea Descriptions:					
+>> 1 = CNF Harvest
+>> 2 = CNF_NoHarvest
+>> 3 = PNIF_NoHarvest
+>> 4 = PNIF_Harvest
+>> 5 = PIF
+>> 6 = MN_state_Harvest
+>> 7 = MN_state_NoHarvest
+>> 8 = County
+>> 9 = Misc_NoHarvest
+
+
+>>ma	presc			target%	start	stop	COMMENTS
+1	JPine_Clearcut	0.0681%	0	100
+4	JPine_Clearcut	0.1632%	0	100
+5	JPine_Clearcut	0.2324%	0	100
+6	JPine_Clearcut	0.3141%	0	100
+8	JPine_Clearcut	0.4810%	0	100
+10	JPine_Clearcut	0.4615%	0	100
+1	RPine_Clearcut	0.0454%	0	100
+4	RPine_Clearcut	0.1088%	0	100
+5	RPine_Clearcut	0.1549%	0	100
+6	RPine_Clearcut	0.7094%	0	100
+8	RPine_Clearcut	0.0016%	0	100
+10	RPine_Clearcut	0.3077%	0	100
+1	SpruceFir_Clearcut	0.0681%	0	100
+4	SpruceFir_Clearcut	0.1632%	0	100
+5	SpruceFir_Clearcut	0.2324%	0	100
+6	SpruceFir_Clearcut	0.6945%	0	100
+8	SpruceFir_Clearcut	0.0120%	0	100
+10	SpruceFir_Clearcut	0.4615%	0	100
+1	Aspen_Clearcut	0.8621%	0	100
+4	Aspen_Clearcut	2.0672%	0	100
+5	Aspen_Clearcut	2.9438%	0	100
+6	Aspen_Clearcut	3.3720%	0	100
+8	Aspen_Clearcut	3.0464%	0	100
+10	Aspen_Clearcut	7.0149%	0	100
+1	Aspen_Clearcut_convert2_WPine	0.2874%	0	100
+4	Aspen_Clearcut_convert2_WPine	0.6891%	0	100
+5	Aspen_Clearcut_convert2_WPine	0.9813%	0	100
+6	Aspen_Clearcut_convert2_WPine	1.1240%	0	100
+8	Aspen_Clearcut_convert2_WPine	1.0155%	0	100
+10	Aspen_Clearcut_convert2_WPine	2.3383%	0	100
+1	Aspen_Clearcut_convert2_Oaks	0.2874%	0	100
+4	Aspen_Clearcut_convert2_Oaks	0.6891%	0	100
+5	Aspen_Clearcut_convert2_Oaks	0.9813%	0	100
+6	Aspen_Clearcut_convert2_Oaks	1.1240%	0	100
+8	Aspen_Clearcut_convert2_Oaks	1.0155%	0	100
+10	Aspen_Clearcut_convert2_Oaks	2.3383%	0	100
+1	Aspen_Clearcut_convert2_Hardwoods	0.2874%	0	100
+4	Aspen_Clearcut_convert2_Hardwoods	0.6891%	0	100
+5	Aspen_Clearcut_convert2_Hardwoods	0.9813%	0	100
+6	Aspen_Clearcut_convert2_Hardwoods	1.1240%	0	100
+8	Aspen_Clearcut_convert2_Hardwoods	1.0155%	0	100
+10	Aspen_Clearcut_convert2_Hardwoods	2.3383%	0	100
+1	Oak_Clearcut	0.0454%	0	100
+4	Oak_Clearcut	0.1088%	0	100
+5	Oak_Clearcut	0.1549%	0	100
+6	Oak_Clearcut	0.5193%	0	100
+8	Oak_Clearcut	0.0401%	0	100
+10	Oak_Clearcut	0.3077%	0	100
+1	LowlandConifer_Clearcut	0.1361%	0	100
+4	LowlandConifer_Clearcut	0.3264%	0	100
+5	LowlandConifer_Clearcut	0.4648%	0	100
+6	LowlandConifer_Clearcut	2.5297%	0	100
+8	LowlandConifer_Clearcut	0.4810%	0	100
+10	LowlandConifer_Clearcut	0.9230%	0	100
+1	Birch_Clearcut	0.1134%	0	100
+4	Birch_Clearcut	0.2720%	0	100
+5	Birch_Clearcut	0.3873%	0	100
+6	Birch_Clearcut	0.3832%	0	100
+8	Birch_Clearcut	0.4008%	0	100
+10	Birch_Clearcut	0.7692%	0	100
+1	Hardwood_Clearcut	0.0681%	0	100
+4	Hardwood_Clearcut	0.1632%	0	100
+5	Hardwood_Clearcut	0.2324%	0	100
+6	Hardwood_Clearcut	0.3452%	0	100
+8	Hardwood_Clearcut	0.4810%	0	100
+10	Hardwood_Clearcut	0.4615%	0	100
+1	Pine_Unevenaged	0.0422%	0	100
+4	Pine_Unevenaged	0.1011%	0	100
+5	Pine_Unevenaged	0.0225%	0	100
+6	Pine_Unevenaged	0.1318%	0	100
+1	Oak_Unevenaged	0.9382%	0	100
+4	Oak_Unevenaged	1.7998%	0	100
+5	Oak_Unevenaged	0.2470%	0	100
+6	Oak_Unevenaged	0.1050%	0	100
+10	Oak_Unevenaged	0.0184%	0	100
+1	Hardwoods_Unevenaged	0.4632%	0	100
+4	Hardwoods_Unevenaged	1.6658%	0	100
+5	Hardwoods_Unevenaged	0.2032%	0	100
+6	Hardwoods_Unevenaged	0.3452%	0	100
+10	Hardwoods_Unevenaged	0.3033%	0	100
+1	BlackAsh_Unevenaged	0.0171%	0	100
+4	BlackAsh_Unevenaged	0.0409%	0	100
+5	BlackAsh_Unevenaged	0.0112%	0	100
+6	BlackAsh_Unevenaged	4.8475%	0	100
+10	BlackAsh_Unevenaged	0.0084%	0	100
+1	Thinning_RedPine 	2.5753%	0	100
+4	Thinning_RedPine	3.0875%	0	100
+5	Thinning_RedPine	2.2455%	0	100
+6	Thinning_RedPine	4.0470%	0	100
+8	Thinning_RedPine	0.0206%	0	100
+10	Thinning_RedPine	0.8044%	0	100
+1	Thinning_SpruceFir	0.1529%	0	100
+4	Thinning_SpruceFir	0.3667%	0	100
+5	Thinning_SpruceFir	0.1333%	0	100
+6	Thinning_SpruceFir	0.3484%	0	100
+8	Thinning_SpruceFir	0.2448%	0	100
+10	Thinning_SpruceFir	0.0478%	0	100
+1	Thinning_Aspen  	0.0322%	0	100
+4	Thinning_Aspen 	0.0772%	0	100
+5	Thinning_Aspen 	0.0281%	0	100
+10	Thinning_Aspen 	0.0101%	0	100
+
+PrescriptionMaps	harvest/prescripts-{timestep}.img
+BiomassMaps		harvest/biomass-removed-{timestep}.img
+EventLog            harvest-event-test-log.csv
+SummaryLog	    harvest/summary-log.csv

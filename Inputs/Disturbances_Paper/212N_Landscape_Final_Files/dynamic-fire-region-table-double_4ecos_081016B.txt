@@ -1,0 +1,19 @@
+LandisData  "Dynamic Fire Region Table"
+
+>>All this data came from Fire INput Workbook 51608_AFRI.docx. It was updated on 1/14/14 afrter a conversation with Brian M
+>> Fire Region Data Table
+>> Fire region| Fire Size               | Seasonal Foliar Moisture Content (FMC) Data: Hi, Lo, and Proportion (Pr) | Other Ecorgion Data
+>>            |                         | Spring (Sp)            Summer (Su)             Fall (Fa)                 |           
+>> Year Code Name  |            Mu Sigma Min Max | SpFMCLo SpFMCHi SpHiPr SuFMCLo SuFMCHi SuFMCPr FaFMCLo FaFMCHi FaHiPr    | OpenFuel NumIgns 
+>> -----------  ------------   ------------------------------------------------------------------------   ----------------
+0   15    PineMoraines      3.2538     1.45  3 23829.1   120       119     0.571   99      120     0.367   120     120     1.00        8      2150   <<209.43 was 2600  then 2000
+0   10    StLouisMoraines    2.3  0.6  3 23829.1   120       119     0.571   99      120     0.367   120     120     1.00        8       340 <<82.14 was 380
+0   13    TamarackLowlands   3.4 0.7  3 23829.1   120       119     0.571   99     120      0.367   120     120     1.00        8      160 <<91.25 was 182
+0   8    ChippewaPlains      3.0   1.2  3 23829.1   120	    119	   0.571   99     120      0.367   120     120     1.00         8    372  <<107.39 was 414
+0   127  Inactive            0      0       3  0     0      0       0          0         0        0      0         0     0         0           0   
+
+>> Empirically derived mus and sigmas
+>>  3.2538  0.9771 
+>>  2.9592  0.7626 
+>>  3.5337  1.2728 
+>>  3.109  0.9161  

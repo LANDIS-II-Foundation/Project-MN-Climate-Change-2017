@@ -1,0 +1,210 @@
+LandisData  "Output Bird Habitat"
+
+Timestep   10
+
+
+LocalVariables
+>> Map Name    	Forest Type    	AgeRange	Species
+>> --------    	-------------  	--------	-------
+   reclass2 -> 	Open		All		None
+               	Regen	 	1 to 15		All
+		LowlandCon	All		Tamarack BlackSpruce WhiteCedar
+		LowlandHdwd	All		RedMaple BlackAsh GreenAsh Cottonwood Willow
+		LowlandMix	All		Tamarack BlackSpruce WhiteCedar RedMaple BlackAsh GreenAsh Cottonwood Willow
+		UplandCon	All		BalsamFir WhiteSpruce JackPine RedPine WhitePine
+		UplandHdwd	All		BoxElder SugarMaple MtnMaple YellowBirch PaperBirch Hackberry WhiteAsh Hophornbm BalsmPoplar BigTAspen QuakAspen PinCherry BlackCherry Chokecherry WhiteOak NPinOak BurOak RedOak Basswood AmericanElm SlipperyElm
+		UplandMix	All		BalsamFir WhiteSpruce JackPine RedPine WhitePine BoxElder SugarMaple MtnMaple YellowBirch PaperBirch Hackberry WhiteAsh Hophornbm BalsmPoplar BigTAspen QuakAspen PinCherry BlackCherry Chokecherry WhiteOak NPinOak BurOak RedOak Basswood AmericanElm SlipperyElm
+
+DerivedLocalVariables
+>> Var Name	Calc
+>> --------	--------
+  LowlandFor	->  reclass2[LowlandCon] + reclass2[LowlandHdwd] + reclass2[LowlandMix]
+  UplandFor 	->  reclass2[UplandCon] + reclass2[UplandHdwd] + reclass2[UplandMix]
+  Forest 	->  reclass2[LowlandCon] + reclass2[LowlandHdwd] + reclass2[LowlandMix] + reclass2[UplandCon] + reclass2[UplandHdwd] + reclass2[UplandMix]
+
+
+NeighborhoodVariables
+>> Var Name	LocalVar		NeighborRadius	Transform
+>> --------	----------		--------------	---------
+loguc200	reclass2[UplandCon]	200		ln
+uf500		UplandFor		500		none
+uf1000		UplandFor		1000		none
+loglc200	reclass2[LowlandCon]	200		ln
+open1000	reclass2[Open]		1000		none
+logreg200	reclass2[Regen]		200		ln
+logreg1000	reclass2[Regen]		1000		ln
+logopen200	reclass2[Open]		200		ln
+loglf500	LowlandFor		500		ln
+loglf1000	LowlandFor		1000		ln
+loguh200	reclass2[UplandHdwd]	200		ln
+logforest200	Forest			200		ln
+>>logw1000	ecoregion[water]	1000		ln
+>>logdev500	ecoregion[dev]		500		ln
+>>logwet500	ecoregion[wetland]	500		ln
+
+
+ClimateVariables
+>> Var Name	Year	Months	Source				ClimateVar	Transform	
+>> --------	----	------	------				----------	---------
+temp		current	3 to 6	Library				Temp		none
+logprevprecip	prev	3 to 6	Library				Precip		ln
+pdsi		current	3 to 6	monthlyPDSI_baseline-CNF.csv	PDSI	none
+logprecip	current 3 to 6  Library				Precip		ln
+>>prevprecip	prev	3 to 6  Library				Precip		none
+>>prevpdsi	prev	3 to 6 	monthlyPDSI_baseline-CNF.csv	PDSI	none
+>>prevtemp	prev	3 to 6	Library				Temp		none
+
+>>DistanceVariables
+>> Var Name	LocalVar		Transform
+>> --------	--------		---------
+>>lognearwat	ecoregion[water]	ln
+
+
+SpeciesModels
+>> Species	Parameter	Type		Value
+>> -------	---------	----		-----
+BLBW	->	intercept	int		-2.235094
+		loguc200	neighbor	0.4063549
+		open1000	neighbor	-0.0320014
+CONW	->	intercept	int		0.70589
+		loguc200	neighbor	1.25531
+		logprevprecip	climate		-1.94542
+CSWA	->	intercept	int		-1.68E+00
+		biomass		biomass		-7.873E-06
+		logreg200	neighbor	5.025E-01
+GWWA	->	intercept	int		-7.88E+00
+		biomass		biomass		-4.07E-05
+		logopen200	neighbor	0.9294
+		logreg1000	neighbor	1.312
+		logreg1000*temp	neighbor*climate	-0.0442
+OVEN	->	intercept	int		-1.5790
+		biomass		biomass		5.882E-06
+		loguc200	neighbor	-0.2520
+		logprevprecip	climate		0.2732
+		uf500		neighbor	0.02043
+PIWA	->	intercept	int		-5.228327
+		loguc200	neighbor	0.823546
+		pdsi		climate		-0.180834
+		uf500		neighbor	0.020801
+RBNU	->	intercept	int		-2.76635
+		loguc200	neighbor	0.46619
+		pdsi		climate		-0.16414
+REVI	->	intercept	int		0.9421
+		logbiomass	lnbiomass	0.006812
+		loglc200	neighbor	-0.273753
+		loglf1000	neighbor	-0.062576
+SCTA	->	intercept	int		-1.81633
+		loglf500	neighbor	-0.419
+		temp		climate		0.07293
+YBFL	->	intercept	int		-5.28615
+		loglc200	neighbor	0.97475
+ALFL	->	intercept	int		-3.61588
+		logopen200	neighbor	0.70388
+		uf500		neighbor	-0.05458
+>>AMCR	->	intercept	int		-5.94376
+>>		logw1000	neighbor	0.38048
+>>		logdev500	neighbor	0.30651
+>>		logprecip	climate		0.87151
+AMRE	->	intercept	int		-0.35784
+		logbiomass	lnbiomass	0.01519
+		loglf1000	neighbor	-1.11136
+		loglc200	neighbor	-0.72642
+		loglf500	neighbor	0.56321
+>>AMRO	->	intercept	int		-4.45600
+>>		biomass		biomass		-0.00001
+>>		loguh200	neighbor	-0.24190
+>>		logdev500	neighbor	0.39420
+>>		loglf1000	neighbor	0.18160
+>>		logprecip	climate		0.69410
+BAWW	->	intercept	int		-2.35525
+		logopen200	neighbor	0.19862
+CHSP	->	intercept	int		-2.69817
+		logbiomass	lnbiomass	-0.04283
+		loguc200	neighbor	0.46950
+		loglf500	neighbor	-0.55102
+		loglf1000	neighbor	0.35022
+COYE	->	intercept	int		-2.35478
+		logopen200	neighbor	0.59567
+		uf500		neighbor	-0.03598
+		uf1000		neighbor	0.01986
+EAWP	->	intercept	int		-1.26626
+		loglc200	neighbor	-0.48284
+		loglf500	neighbor	-0.33202
+		loglf1000	neighbor	0.25636
+GRCA	->	intercept	int		-3.09274
+		logbiomass	lnbiomass	-0.03992
+		logforest200	neighbor	-1.21989
+HETH	->	intercept	int		-2.00673
+		loglc200	neighbor	0.46211
+		loglf500	neighbor	-0.48953
+		loglf1000	neighbor	0.61532
+LEFL	->	intercept	int		1.19815
+		loglc200	neighbor	-0.79901
+		logprecip	climate		-0.48820
+MOWA	->	intercept	int		-3.27657
+		logreg200	neighbor	0.48410
+MYWA	->	intercept	int		-3.05331
+		loglf500	neighbor	-0.36472
+		loglf1000	neighbor	0.38294
+NAWA	->	intercept	int		-3.73144
+		logbiomass	lnbiomass	0.01696
+		loglc200	neighbor	0.53242
+		loglf500	neighbor	0.16840
+		logprevprecip	climate		0.41629
+NOPA	->	intercept	int		-4.13196
+		loglc200	neighbor	0.25558
+		loglf500	neighbor	0.32542
+NOWA	->	intercept	int		-7.42830
+		loglf1000	neighbor	1.24230
+		logprevprecip	climate		0.90980
+RBGR	->	intercept	int		-2.04800
+		biomass		biomass		-0.00001
+		logage		lnage		-0.24550
+		logopen200	neighbor	0.24810
+		logreg1000	neighbor	0.31430
+>>RWBL	->	intercept	int		1.19624
+>>		lognearwat	distance	-0.97316
+>>		logwet500	neighbor	0.81119
+>>		uf1000		neighbor	-0.04465
+SOSP	->	intercept	int		-5.85534
+		logbiomass	lnbiomass	-0.05404
+		logopen200	neighbor	0.89742
+SWSP	->	intercept	int		-3.82249
+		uf500		neighbor	-0.04685
+		logopen200	neighbor	0.65976
+VEER	->	intercept	int		0.18944
+		loguc200	neighbor	-0.42061
+		loglf1000	neighbor	-0.46579
+		temp		climate		0.07556
+WIWR	->	intercept	int		-3.89077
+		loglc200	neighbor	0.19563
+		loglf500	neighbor	0.64655
+WPWA	->	intercept	int		-6.32633
+		loglc200	neighbor	1.15608
+WTSP	->	intercept	int		-4.24279
+		logbiomass	lnbiomass	-0.01438
+		loglc200	neighbor	0.28652
+		loglf500	neighbor	0.24704
+		loglf1000	neighbor	0.88197
+YBSA	->	intercept	int		-2.82515
+		logbiomass	lnbiomass	-0.01486
+		loguh200	neighbor	0.45308
+		pdsi		climate		-0.10464
+BRCR	->	intercept	int		-3.08315
+		logforest200	neighbor	1.57921
+		open1000	neighbor	-0.16552
+		logprecip	climate		-1.43532
+		open1000*logprecip	neighbor*climate	0.03261
+BTNW	->	intercept	int		-8.25000
+		logforest200	neighbor	1.92200
+		uf500*pdsi	neighbor*climate	-0.00147
+
+
+>>LocalVarMapFileNames   	output/bird-habitat/{local-var-name}-{timestep}.img
+>>NeighborVarMapFileNames output/bird-habitat/{neighbor-var-name}-{timestep}.img
+>>ClimateVarMapFileNames  output/bird-habitat/{climate-var-name}-{timestep}.img
+>>DistanceVarMapFileNames  output/bird-habitat/{distance-var-name}-{timestep}.img
+SpeciesMapFileNames	output/bird-habitat/habitat-{species-name}-{timestep}.img
+
+SpeciesLogFileNames output-bird-habitat/{species-name}_log.csv
+LogFile		output-bird-habitat/bird_habitat_log.csv

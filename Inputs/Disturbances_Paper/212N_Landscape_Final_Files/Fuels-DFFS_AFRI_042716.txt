@@ -1,0 +1,76 @@
+LandisData  "Dynamic Fuel System"
+
+>> Note:  All inputs are provided as examples only.  They are not intended to serve as default values.
+
+Timestep  1
+
+>> 		 Fuel 
+>> Species 	 Coefficient 
+>> -------- 	-----------   all spp are included here 
+BalsamFir	1	
+BoxElder	0.5	
+RedMaple	1	
+SugarMaple	1	
+MtnMaple	1	
+YellowBirch	1	
+PaperBirch	1	
+Hackberry	1	
+WhiteAsh	1	
+BlackAsh	1	
+GreenAsh	1	
+Tamarack	1	
+Hophornbm	1	
+WhiteSpruce	1	
+BlackSpruce	1	
+JackPine	1	
+RedPine	1	
+WhitePine	1	
+BalsmPoplar	1	
+Cottonwood	1	
+BigTAspen	1	
+QuakAspen	1	
+PinCherry	1	
+BlackCherry	1	
+Chokecherry	1	
+WhiteOak	1	
+NPinOak	1	
+BurOak	1	
+RedOak	1	
+Willow	1	
+WhiteCedar	1	
+Basswood	1	
+AmericanElm	1	
+SlipperyElm	1
+   
+HardwoodMaximum 15
+
+DeadFirMaxAge 15
+
+FuelTypes
+>> Fuel Type  BaseFuel  	  Age Range	  Species  
+>> ---------  -------------   	 ------------	  ----------    
+      1     Conifer		   0 to 800      Tamarack WhiteCedar				<<d1 spread as conifer
+      2	    Conifer	           0 to  40	 WhiteSpruce BlackSpruce  BalsamFir                    <<c2 young
+      6     Conifer		   41 to 300     WhiteSpruce BlackSpruce  BalsamFir 			<<c2 old
+      3	    Conifer	           41 to 250	 JackPine                                      	<<c3 jp old
+      4	    Conifer		   0 to 40	 JackPine                                      	<<c4 jp young
+      5     Conifer		   0 to 450      RedPine WhitePine                             	<<c5
+      14    Conifer		   0 to 40       JackPine WhiteSpruce BlackSpruce BalsamFir		<<mixed jp young
+      15    Conifer		   41 to 300     JackPine WhiteSpruce BlackSpruce BalsamFir		<<mixed jp old
+      8     Deciduous 	   	   0 to 400	 BoxElder RedMaple SugarMaple MtnMaple YellowBirch Hackberry PaperBirch WhiteAsh BlackAsh GreenAsh Hophornbm BalsmPoplar BigTAspen Cottonwood QuakAspen PinCherry BlackCherry Chokecherry WhiteOak BurOak RedOak Willow Basswood AmericanElm SlipperyElm	<<d1a
+>>      16    Open	           0 to 300	                                       	<<01a
+>>      17    Open	  	   0 to 300	 					<<O1b
+>>      13    Slash		   0 to 30	 
+    
+	  
+	  
+DisturbanceConversionTable
+>> Fuel Type        Duration       Disturbance Description                                                                         
+>> ---------     --------------    ----------------------------------			                                
+     13		30           WindSeverity5, WindSeverity4, WindSeverity3,SNF_CC_JP_NR,SNF_CC_JP_PJP,SNF_CC_JP_PWP,SNF_CC_A_NR,SNF_CC_A_PWP,SNF_CC_A_PJP,SNF_CC_A_PWC,SNF_CC_BS_NR,SNF_CC_BS_PBS,SNF_PH_A_NR,SNF_PH_A_PWP,SNF_SW_WP&RP_NR,SNF_SW_WP&RP_PWP,SNF_ST_WP&RP_NR,SNF_ST_WP&RP_PWP,SNF_CT_ASP&RP_NR,SNF_CT_ASP&RP_PWRP,CL_SW_WP&RP_NR,CL_SW_WP&RP_PWRP,CL_CCS_JP/A_NR,CL_CCM_JP/A_NR,CL_CCS_LBS_NR,CL_CCL_JP/A_PJP,CL_CCVL_JP/A_NR,CNTY_CC_MW_NR,MN_ST_TAMARACK_NR,MN_CC_MIXEDWOOD_NR,MN_CT_MIXEDWOOD_NR,MN_UA_MIXEDWOOD_NR,PVT-INDIV_CC_PW_NR,PVT-INDIV_THIN_MW_NR,PVT-INDUST_CC_MW_NR
+
+ 
+MapFileNames	fire/FuelType-{timestep}.img
+PctConiferFileName	fire/PctConifer-{timestep}.img
+PctDeadFirFileName	fire/PctDeadFir-{timestep}.img
+

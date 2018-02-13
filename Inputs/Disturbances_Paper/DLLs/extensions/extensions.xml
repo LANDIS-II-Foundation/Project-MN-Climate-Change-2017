@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ExtensionDataset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Extensions>
+    <Extension Name="Output Age Reclass" Version="2.0">
+      <Type>output</Type>
+      <Assembly>Landis.Extension.Output.AgeReclass</Assembly>
+      <Class>Landis.Extension.Output.AgeReclass.PlugIn</Class>
+      <Description>Output forest reclassification maps</Description>
+      <UserGuide>LANDIS-II Reclass Output v2.0 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Output Max Species Age" Version="2.0">
+      <Type>output</Type>
+      <Assembly>Landis.Extension.Output.MaxSpeciesAge</Assembly>
+      <Class>Landis.Extension.Output.MaxSpeciesAge.PlugIn</Class>
+      <Description>Maximum age output maps</Description>
+      <UserGuide>LANDIS-II Output Max Species Age v2.0 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Base Wind" Version="2.1">
+      <Type>disturbance:wind</Type>
+      <Assembly>Landis.Extension.BaseWind</Assembly>
+      <Class>Landis.Extension.BaseWind.PlugIn</Class>
+      <Description>Wind Disturbance</Description>
+      <UserGuide>LANDIS-II Base Wind v2.1 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Output Leaf Biomass" Version="2.1">
+      <Type>output</Type>
+      <Assembly>Landis.Extension.Output.LeafBiomass</Assembly>
+      <Class>Landis.Extension.Output.LeafBiomass.PlugIn</Class>
+      <Description>Output biomass for cohorts with separate leaf and wood biomass</Description>
+      <UserGuide>LANDIS-II Leaf Biomass Output v2.1 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Output Leaf Biomass Reclass" Version="1.1">
+      <Type>output</Type>
+      <Assembly>Landis.Extension.Output.LeafBiomassReclass</Assembly>
+      <Class>Landis.Extension.Output.LeafBiomassReclass.PlugIn</Class>
+      <Description>Output forest reclassification maps using leaf biomass</Description>
+      <UserGuide>LANDIS-II Leaf Biomass Reclass Output v1.1 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Dynamic Leaf Biomass Fuels" Version="2.0">
+      <Type>disturbance:fuel</Type>
+      <Assembly>Landis.Extension.LeafBiomassFuels</Assembly>
+      <Class>Landis.Extension.LeafBiomassFuels.PlugIn</Class>
+      <Description>Dynamic fuel assignment based on Leaf Biomass cohorts</Description>
+      <UserGuide>LANDIS-II Dynamic Fuels - Leaf Biomass v2.0 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Dynamic Fuel System" Version="2.0.1">
+      <Type>disturbance:fuel</Type>
+      <Assembly>Landis.Extension.DynamicFuels</Assembly>
+      <Class>Landis.Extension.DynamicFuels.PlugIn</Class>
+      <Description>Dynamic Fuel assignment extension</Description>
+      <UserGuide>LANDIS-II Dynamic Fuel System v2.0.1 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Dynamic Fire System" Version="4.0">
+      <Type>disturbance:fire</Type>
+      <Assembly>Landis.Extension.DynamicFire</Assembly>
+      <Class>Landis.Extension.DynamicFire.PlugIn</Class>
+      <Description>Dynamic Fire System</Description>
+      <UserGuide>LANDIS-II Dynamic Fire System v2.0.3 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Output Biomass-by-Age" Version="2.0">
+      <Type>output</Type>
+      <Assembly>Landis.Extension.Output.BiomassByAge</Assembly>
+      <Class>Landis.Extension.Output.BiomassByAge.PlugIn</Class>
+      <Description>Output biomass by ageclass by species</Description>
+      <UserGuide>LANDIS-II Age Biomass Output v2.0 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Output Cohort Statistics" Version="2.1.1">
+      <Type>output</Type>
+      <Assembly>Landis.Extension.Output.CohortStats</Assembly>
+      <Class>Landis.Extension.Output.CohortStats.PlugIn</Class>
+      <Description>This extension will produce outputs of cohort statistics</Description>
+      <UserGuide>LANDIS-II Age Cohort Statistics v2.1 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Base BDA" Version="3.1 (beta release 3)">
+      <Type>disturbance:BDA</Type>
+      <Assembly>Landis.Extension.BaseBDA</Assembly>
+      <Class>Landis.Extension.BaseBDA.PlugIn</Class>
+      <Description>Biological disturbance agents</Description>
+      <UserGuide>LANDIS-II Base BDA v3.1 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Century Succession" Version="4.0">
+      <Type>succession</Type>
+      <Assembly>Landis.Extension.Succession.Century</Assembly>
+      <Class>Landis.Extension.Succession.Century.PlugIn</Class>
+      <Description>Succession with biomass cohorts and Century soil model</Description>
+      <UserGuide>LANDIS-II Century Succession v4.0 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Leaf Biomass Harvest" Version="2.1">
+      <Type>disturbance:harvest</Type>
+      <Assembly>Landis.Extension.LeafBiomassHarvest</Assembly>
+      <Class>Landis.Extension.LeafBiomassHarvest.PlugIn</Class>
+      <Description>Harvesting for lef biomass cohorts</Description>
+      <UserGuide>LANDIS-II Leaf Biomass Harvest v2.1 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Leaf Biomass Insects" Version="3.0.0 (alpha release 1)">
+      <Type>disturbance:insects</Type>
+      <Assembly>Landis.Extension.LeafBiomassInsects</Assembly>
+      <Class>Landis.Extension.Insects.PlugIn</Class>
+      <Description>Insect defoliation, growth reduction, and mortality for leaf biomass succession</Description>
+    </Extension>
+    <Extension Name="Linear Wind" Version="1.0 (beta release 3)">
+      <Type>disturbance:wind</Type>
+      <Assembly>Landis.Extension.LinearWind</Assembly>
+      <Class>Landis.Extension.LinearWind.PlugIn</Class>
+      <Description>Linear wind disturbance</Description>
+      <UserGuide>LANDIS-II Linear Wind v1.0 User Guide.pdf</UserGuide>
+    </Extension>
+    <Extension Name="Output Bird Habitat Century" Version="0.3 (beta release 22)">
+      <Type>output:birdhabitat</Type>
+      <Assembly>Landis.Extension.Output.BirdHabitatCentury</Assembly>
+      <Class>Landis.Extension.Output.BirdHabitat.PlugIn</Class>
+      <Description>Ouput Bird Habitat Century</Description>
+    </Extension>
+  </Extensions>
+</ExtensionDataset>

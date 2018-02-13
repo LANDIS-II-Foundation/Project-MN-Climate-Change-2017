@@ -1,0 +1,19 @@
+LandisData "Base BDA"
+
+Timestep	1
+
+MapNames	bda/{agentName}-{timestep}.img
+
+SRDMapNames	bda/{agentName}-SRD-{timestep}.img
+
+NRDMapNames	bda/{agentName}-NRD-{timestep}.img
+
+BDPMapNames     bda/{agentName}-BDP-{timestep}.gis
+
+LogFile		bda-log.csv
+
+BDAInputFiles	BDA_JackPineBudworm_042716.txt
+		ChestnutBorer_04.27.16.txt
+		
+	
+

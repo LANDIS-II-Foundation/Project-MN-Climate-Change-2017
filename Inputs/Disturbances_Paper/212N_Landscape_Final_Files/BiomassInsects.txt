@@ -1,0 +1,9 @@
+LandisData "Leaf Biomass Insects"
+
+Timestep	1
+
+MapNames	Insects/{insectName}-{timestep}.img
+
+LogFile		Insect-log.csv
+
+InsectInputFiles FTC_Biomass_Insects_212N_100716.txt

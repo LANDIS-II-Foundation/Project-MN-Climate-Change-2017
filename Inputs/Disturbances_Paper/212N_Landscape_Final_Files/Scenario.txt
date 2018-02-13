@@ -1,0 +1,40 @@
+LandisData	"Scenario"	
+
+Duration 	100
+
+Species		"CNF_species-4.27.16.txt"
+
+Ecoregions	"Ecoregion.txt"
+
+EcoregionsMap	"EcoMap_I2_nomiss.img"	
+
+CellLength	200	<< meters
+
+>> Succession Extension	Initialization File
+>>---------------------------------------------------	
+"Century Succession"		"Century_succession-4ha_092716_1y.txt"
+
+
+>> Disturbance Extensions	Initialization File
+>>---------------------------------------------------	
+"Base Wind" 			"Wind_400WRP_120615.txt"
+"Linear Wind"			"LinearWind_120215.txt"
+"Leaf Biomass Harvest"		"Harvest_BAU_042716.txt"
+"Leaf Biomass Insects"		"BiomassInsects.txt"
+"Base BDA" 			"BaseBDA.txt"
+"Dynamic Fuel System"	 	"Fuels-DFFS_AFRI_042716.txt"
+"Dynamic Fire System"		"Fire-DFFS_AFRI_031915.txt"
+
+
+DisturbancesRandomOrder	no
+
+
+>> Output Extensions	Initialization File
+>>---------------------------------------------------	
+"Output Leaf Biomass"	    	"output-leaf-biomass.txt"
+"Output Biomass-by-Age"		"output-biomass-by-age_060716.txt"
+"Output Leaf Biomass Reclass"	"output-biomass-reclass_042716.txt"
+>>"Output Bird Habitat Century" 	"output-bird-habitat_042716.txt"
+
+
+>>RandomNumberSeed	4357

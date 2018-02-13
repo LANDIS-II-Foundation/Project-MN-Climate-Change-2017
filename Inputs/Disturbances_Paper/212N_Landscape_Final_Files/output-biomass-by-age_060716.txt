@@ -1,0 +1,41 @@
+LandisData  "Output Biomass-by-Age"
+
+Timestep   10
+
+MapNames   spp-bio-age/{species}-{ageclass}-{timestep}.img
+
+Species	BalsamFir	ageclass1(0-15)	ageclass2(>15)
+	BoxElder	ageclass1(0-15)	ageclass2(>15)
+	RedMaple	ageclass1(0-15)	ageclass2(>15)
+	SugarMaple	ageclass1(0-15)	ageclass2(>15)
+	MtnMaple	ageclass1(0-15)	ageclass2(>15)
+	YellowBirch	ageclass1(0-15)	ageclass2(>15)
+	Hackberry	ageclass1(0-15)	ageclass2(>15)
+	WhiteAsh	ageclass1(0-15)	ageclass2(>15)
+	BlackAsh	ageclass1(0-15)	ageclass2(>15)
+	GreenAsh	ageclass1(0-15)	ageclass2(>15)
+	Tamarack	ageclass1(0-15)	ageclass2(>15)
+	Hophornbm	ageclass1(0-15)	ageclass2(>15)
+	WhiteSpruce	ageclass1(0-15)	ageclass2(>15)
+	BlackSpruce	ageclass1(0-15)	ageclass2(>15)
+	JackPine	ageclass1(0-15)	ageclass2(>15)
+	RedPine		ageclass1(0-15)	ageclass2(>15)
+	WhitePine	ageclass1(0-15)	ageclass2(>15)
+	BalsmPoplar	ageclass1(0-15)	ageclass2(>15)
+	Cottonwood	ageclass1(0-15)	ageclass2(>15)
+	BigTAspen	ageclass1(0-15)	ageclass2(>15)
+	QuakAspen	ageclass1(0-15)	ageclass2(>15)
+	PinCherry	ageclass1(0-15)	ageclass2(>15)
+	BlackCherry	ageclass1(0-15)	ageclass2(>15)
+	Chokecherry	ageclass1(0-15)	ageclass2(>15)
+	WhiteOak	ageclass1(0-15)	ageclass2(>15)
+	NPinOak		ageclass1(0-15)	ageclass2(>15)
+	BurOak		ageclass1(0-15)	ageclass2(>15)
+	RedOak		ageclass1(0-15)	ageclass2(>15)
+	Willow		ageclass1(0-15)	ageclass2(>15)
+	WhiteCedar	ageclass1(0-15)	ageclass2(>15)
+	Basswood	ageclass1(0-15)	ageclass2(>15)
+	AmericanElm	ageclass1(0-15)	ageclass2(>15)
+	SlipperyElm	ageclass1(0-15)	ageclass2(>15)
+
+

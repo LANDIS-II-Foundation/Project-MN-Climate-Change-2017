@@ -1,0 +1,81 @@
+LandisData InsectDefoliator
+
+InsectName	FTC
+
+>> Brian S defined these duration and interval parameters based on the 82-year aerial survey record provided by Jana Albers.
+>> Refined by further analysis 10/7/16 - see FTC Calibration October 2016.xlsx
+DurationDistribution	Weibull << Weibull, Normal or Exponential.
+DurationParameter1	1.1 << Exponential rate, Weibull shape, or Normal mean.
+DurationParameter2	0.54   << Weibull scale or Normal standard deviation. If using Exponential, set to 1 and ignore.
+
+MeanTimeBetweenOutbreaks	11  <<Brian had it marked as 11.4 but it has to be an integer
+StdDevTimeBetweenOutbreaks	4
+
+NeighborhoodSize	150	<< meters BORROWED FROM THE MARYLAND PARAMETERS
+
+>> Lower this number to lower probabilities of patch generation, i.e. start fewer patches. 
+InitialPatchOutbreakSensitivity	0.00170 	<< must be > 0.0  --- Calibrated (BiomassInsexts_outbreak_area.R) for patch area to be 0.25 to 0.75 of active sites
+
+>>JANE FOSTER CORRESPONDENCE: 
+>>I have at least looked at the patch size distribution for FTC in NE Minnesota. This is further East than the Chippewa, but something closer than MD. 
+>>So far I have looked at patterns from the outbreak in 2002. You could try parameters from a weibull distribution fit to defoliation patches in that 2002 map. Here are the fitted values.
+>>      shape          scale    
+>>  7.017139e-01   1.192957e+03 
+>> (2.728496e-02) (1.115158e+02)
+>>These are pretty different from my Green Ridge simulations, so you may have to play with the InitialOutbreakSensitivity to get to the desired mean defoliation levels. 
+
+InitialPatchDistribution	Weibull	<<Weibull, Beta, or Gamma
+>> Patch size distribution should be based on patch radius distribution? patch area distribution? Units?
+InitialPatchValue1	0.7017	<<depends on the distribution, must be > 0.0 -- FROM JANE FOSTER'S ANALYSIS OF FTC DEFOLIATION PATTERNS IN EASTERN MN
+InitialPatchValue2	11930	<<depends on the distribution, must be > 0.0 -- FROM JANE FOSTER'S ANALYSIS OF FTC DEFOLIATION PATTERNS IN EASTERN MN
+
+SpeciesParameters
+MortalityEstimate  Annual << 'Annual' or '7Year'
+>> Susceptibility class by species
+>> Species	Susceptibility	 Growth Reduction Parameters  Mortality Parameters
+>>		Class		 Slope	Intercept	      Slope	Intercept
+>>--------------------------------------------------------------------------------
+BalsamFir	3	-0.8	1	0.009	7	
+BoxElder	2	-0.8	1	0.006	2.202	<< Same as acersacc
+RedMaple	3	-0.8	1	0.006	2.202	
+SugarMaple	2	-0.8	1	0.006	2.202	<<Growth slope - Jane's current analysis, IALE15, Mortality- Jane's analysis of Campbell&Valentine 1972 Acerrubr"
+MtnMaple	2	-0.8	1	0.006	2.202	
+YellowBirch	1	-0.8	1	0.008	2.135	<< Diffuse porous, same as populus"
+PaperBirch	1	-0.8	1	0.008	2.135	<< Diffuse porous, same as populus"
+Hackberry	2	-0.8	1	0.008	1.704	<< Ring-porous, same as quercus"
+WhiteAsh	3	-0.8	1	0.008	1.704	<< Ring-porous, same as quercus"
+BlackAsh	3	-0.8	1	0.008	1.704	<< Ring-porous, same as quercus"
+GreenAsh	3	-0.8	1	0.008	1.704	<< Ring-porous, same as quercus"
+Tamarack	3	-0.8	1	0.009	7	
+Hophornbm	2	-0.8	1	0.008	2.135	<< Diffuse porous, same as populus"
+WhiteSpruce	3	-0.8	1	0.006	5	
+BlackSpruce	3	-0.8	1	0.006	5	
+JackPine	3	-0.8	1	0.009	7	
+RedPine		3	-1	1	0.016	4	
+WhitePine	3	-1	1	0.016	4	
+BalsmPoplar	1	-0.8	1	0.008	2.135	<< Growth slope - Jane's current analysis, IALE15, Mortality- Jane's analysis of Mann et al. 2008"
+Cottonwood	1	-0.8	1	0.008	2.135	
+BigTAspen	1	-0.8	1	0.008	2.135	
+QuakAspen	1	-0.8	1	0.008	2.135	
+PinCherry	2	-0.8	1	0.008	2.135	
+BlackCherry	2	-0.8	1	0.008	2.135	
+Chokecherry	2	-0.8	1	0.008	2.135	
+WhiteOak	1	-0.165	1	0.008	1.704	<< Growth slope, Naidoo & Lechowicz, Mortality params, Rubstov 1996."
+NPinOak		1	-0.165	1	0.008	1.704	
+BurOak		1	-0.165	1	0.008	1.704	
+RedOak		1	-0.165	1	0.008	1.704	
+Willow		2	-0.8	1	0.008	2.135	<< Diffuse porous, same as populus"
+WhiteCedar	3	-0.5	1	0.009	7	
+Basswood	1	-0.17	1	0.008	2.135	<< Diffuse porous, same as populus"
+AmericanElm	2	-0.8	1	0.008	2.135	
+SlipperyElm	2	-0.8	1	0.008	2.135	
+
+Susceptibilities
+>> susceptibility class is defined by expert opinion (Jana and Mike Albers)
+>>Remaining parameters are borrowed from Arjan DeBruijn's parameters in Maryland - need to refine for aspen (have local data)
+
+>> 40-80 are the same, will simplify model to only have 9 distributions (vs. 15 now).
+>> Host	Dist80	S1_80	S2_80	Dist60	S1_60	S2_60	Dist40	S1_40	S2_40	Dist20	S1_20	S2_20	Dist0	S1_0	S2_0
+1	Beta	1.06	0.81	Beta	1.06	0.81	Beta	1.06	0.81	Beta	1.17	2.64	Beta	0.29	4.12
+2	Beta	0.73	0.75	Beta	0.73	0.75	Beta	0.73	0.75	Beta	0.76	2.13	Beta	0.26	4.92
+3	Beta	0	10	Beta	0	10	Beta	0	10	Beta	0	10	Beta	0	10
